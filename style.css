@@ -1,347 +1,279 @@
-/* =========================
-   RESET
-========================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+background:#f3ede6;
+font-family:'Playfair Display',serif;
+color:#6f5c4f;
+text-align:center;
+line-height:1.9;
+overflow-x:hidden;
+transition:background 1.5s ease;
 }
 
-body {
-  background: #f3ede6;
-  font-family: 'Playfair Display', serif;
-  color: #6f5c4f;
-  text-align: center;
-  line-height: 1.9;
-  overflow-x: hidden;
+body.scrolled{
+background:#efe7de;
 }
 
-/* =========================
-   OPENING
-========================= */
-.opening {
-  position: fixed;
-  inset: 0;
-  background: #f3ede6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  transition: opacity 0.8s ease;
+/* OPENING */
+.opening{
+position:fixed;
+inset:0;
+background:#f3ede6;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+transition:opacity .8s ease;
 }
 
-.opening-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.opening-content{
+display:flex;
+flex-direction:column;
+align-items:center;
 }
 
-.opening-small {
-  font-size: 0.9rem;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
+.opening-image{
+width:230px;
+margin:30px 0;
 }
 
-#openingGuest {
-  font-size: 1.4rem;
-  margin-bottom: 25px;
+.opening button{
+padding:14px 40px;
+background:#b79b85;
+border:none;
+color:white;
+cursor:pointer;
 }
 
-.opening-image {
-  width: 230px;
-  margin: 30px 0;
-  display: block;
+/* DIVIDER */
+.divider{
+width:70%;
+max-width:400px;
+height:1px;
+background:#d8cfc6;
+margin:60px auto;
+position:relative;
 }
 
-.opening button {
-  padding: 14px 40px;
-  background: #b79b85;
-  border: none;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s ease;
+.divider::after{
+content:"";
+position:absolute;
+left:50%;
+top:-4px;
+transform:translateX(-50%);
+width:8px;
+height:8px;
+background:#b79b85;
+border-radius:50%;
 }
 
-.opening button:hover {
-  background: #a88973;
+/* ARABIC */
+.arabic{font-family:'Amiri',serif}
+
+.bismillah{font-size:1.4rem;margin-bottom:20px}
+.salam{font-size:1.8rem;margin-bottom:40px}
+.ayat{font-size:1.5rem;line-height:2.2;margin:30px 0}
+.translation{font-size:.95rem;margin-bottom:50px}
+
+/* NAME FRAME */
+.name-frame{
+margin:60px auto;
+padding:40px 20px;
+border:1px solid #e0d6cd;
+border-radius:16px;
+max-width:600px;
+background:rgba(255,255,255,.4);
+transition:box-shadow 1s ease;
 }
 
-/* =========================
-   ISLAMIC SECTION
-========================= */
-.bismillah-section {
-  padding: 120px 20px 80px;
-  max-width: 800px;
-  margin: auto;
+.name-frame.active{
+box-shadow:0 0 30px rgba(183,155,133,.15);
 }
 
-.arabic {
-  font-family: 'Amiri', serif;
+.bride,.groom{
+font-size:2.3rem;
+font-weight:500;
+letter-spacing:1px;
+margin:8px 0;
 }
 
-.bismillah {
-  font-size: 1.4rem;
-  margin-bottom: 20px;
+.ampersand{
+font-size:3rem;
+margin:10px 0;
+color:#b79b85;
+font-style:italic;
 }
 
-.salam {
-  font-size: 1.8rem;
-  margin-bottom: 50px;
+/* HERO */
+.hero{padding:80px 20px;transition:transform .2s linear}
+
+.hero-sub{
+letter-spacing:2px;
+margin-bottom:30px;
 }
 
-.ayat {
-  font-size: 1.6rem;
-  line-height: 2.3;
-  margin: 30px 0 40px;
+/* COUNTDOWN */
+.flip-countdown{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:nowrap;
 }
 
-.translation {
-  font-size: 0.95rem;
-  opacity: 0.8;
-  margin-bottom: 60px;
+.flip-box{
+background:white;
+border-radius:10px;
+padding:15px;
+width:70px;
+box-shadow:0 6px 15px rgba(0,0,0,.08);
 }
 
-.intro-text {
-  margin-bottom: 60px;
-  font-size: 1rem;
+.flip-box span{
+font-size:1.6rem;
+font-weight:bold;
+display:block;
 }
 
-/* =========================
-   NAMES
-========================= */
-.bride {
-  font-size: 2rem;
-  font-weight: 400;
+.flip-box small{
+font-size:.65rem;
+opacity:.6;
 }
 
-.ampersand {
-  font-size: 3.5rem;
-  margin: 15px 0;
-  color: #b79b85;
-  font-weight: 600;
+/* SECTION TITLE */
+.section-title{
+margin:90px 0 40px;
+letter-spacing:3px;
+position:relative;
+display:inline-block;
+padding:0 20px;
 }
 
-.groom {
-  font-size: 2.5rem;
-  font-weight: 600;
+.section-title::before,
+.section-title::after{
+content:"";
+position:absolute;
+top:50%;
+width:60px;
+height:1px;
+background:#d8cfc6;
 }
 
-/* =========================
-   HERO TAGLINE
-========================= */
-.hero {
-  padding: 80px 20px;
+.section-title::before{right:100%;margin-right:15px}
+.section-title::after{left:100%;margin-left:15px}
+
+/* DETAILS */
+.detail-card{
+background:white;
+border:1px solid #e4d8cd;
+padding:30px;
+border-radius:14px;
+max-width:420px;
+margin:auto;
 }
 
-.hero-sub {
-  font-size: 1.1rem;
-  letter-spacing: 2px;
-  margin-bottom: 30px;
+/* MAP + RSVP */
+.rsvp-map-wrapper{
+display:flex;
+gap:40px;
+justify-content:center;
+align-items:flex-start;
+padding:80px 20px;
+flex-wrap:wrap;
 }
 
-/* =========================
-   FLIP COUNTDOWN
-========================= */
-.flip-countdown {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  flex-wrap: wrap;
+.small-map{
+flex:1;
+max-width:400px;
+border-radius:14px;
+overflow:hidden;
+border:1px solid #e4d8cd;
 }
 
-.flip-box {
-  background: white;
-  border-radius: 12px;
-  padding: 20px 15px;
-  width: 90px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease;
+.small-map iframe{
+width:100%;
+height:280px;
+border:none;
 }
 
-.flip-box:hover {
-  transform: translateY(-5px);
+.rsvp-section{
+flex:1;
+max-width:400px;
 }
 
-.flip-box span {
-  font-size: 2.2rem;
-  font-weight: bold;
-  display: block;
+form{
+background:white;
+padding:30px;
+border-radius:14px;
+border:1px solid #e4d8cd;
+display:flex;
+flex-direction:column;
+gap:18px;
 }
 
-.flip-box small {
-  font-size: 0.7rem;
-  letter-spacing: 1px;
-  opacity: 0.6;
+input,select,textarea{
+border:none;
+border-bottom:1px solid #e4d8cd;
+padding:10px;
+background:transparent;
+outline:none;
 }
 
-/* =========================
-   SECTION TITLE
-========================= */
-.section-title {
-  margin: 90px 0 40px;
-  font-size: 1.3rem;
-  letter-spacing: 3px;
+button{
+padding:14px;
+background:#b79b85;
+color:white;
+border:none;
+cursor:pointer;
 }
 
-/* =========================
-   EVENT DETAILS
-========================= */
-.details {
-  padding: 20px;
+/* GALLERY CAROUSEL */
+.carousel{
+overflow:hidden;
+max-width:700px;
+margin:auto;
 }
 
-.detail-card {
-  background: white;
-  border: 1px solid #e4d8cd;
-  padding: 30px;
-  border-radius: 14px;
-  max-width: 420px;
-  margin: 0 auto;
+.carousel-track{
+display:flex;
+gap:20px;
+overflow-x:auto;
+scroll-snap-type:x mandatory;
+padding-bottom:10px;
 }
 
-/* =========================
-   MAP + RSVP WRAPPER
-========================= */
-.rsvp-map-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 40px;
-  padding: 80px 20px;
-  max-width: 1100px;
-  margin: auto;
+.photo-slide{
+min-width:250px;
+height:250px;
+background:#e8ded5;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:14px;
+scroll-snap-align:center;
 }
 
-.small-map {
-  flex: 1;
-  max-width: 450px;
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid #e4d8cd;
+/* REVEAL */
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:opacity 1s ease, transform 1s ease;
 }
 
-.small-map iframe {
-  width: 100%;
-  height: 350px;
-  border: none;
+.reveal.active{
+opacity:1;
+transform:translateY(0);
 }
 
-.rsvp-section {
-  flex: 1;
-  max-width: 450px;
+/* BOTTOM */
+.bottom-illustration{
+width:200px;
+margin:60px auto;
+opacity:.8;
 }
 
-/* =========================
-   FORM
-========================= */
-form {
-  background: white;
-  padding: 35px;
-  border-radius: 14px;
-  border: 1px solid #e4d8cd;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-input, select, textarea {
-  border: none;
-  border-bottom: 1px solid #e4d8cd;
-  padding: 10px;
-  font-size: 14px;
-  background: transparent;
-  outline: none;
-}
-
-textarea {
-  resize: none;
-  height: 90px;
-}
-
-button[type="submit"] {
-  padding: 14px;
-  background: #b79b85;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-button[type="submit"]:hover {
-  background: #a88973;
-}
-
-#formMessage {
-  margin-top: 15px;
-  font-size: 0.9rem;
-}
-
-/* =========================
-   GALLERY
-========================= */
-.gallery {
-  padding: 100px 20px;
-}
-
-.gallery-grid {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  flex-wrap: wrap;
-}
-
-.photo-placeholder {
-  width: 220px;
-  height: 220px;
-  background: #e8ded5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #b79b85;
-  font-size: 0.9rem;
-  border-radius: 14px;
-  transition: 0.3s ease;
-}
-
-.photo-placeholder:hover {
-  background: #d9cbbf;
-}
-
-/* =========================
-   BOTTOM ILLUSTRATION
-========================= */
-.bottom-illustration {
-  width: 230px;
-  float: right;
-  margin: 60px 6% 80px 0;
-  opacity: 0.8;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-@media (max-width: 900px) {
-
-  .rsvp-map-wrapper {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .small-map iframe {
-    height: 250px;
-  }
-
-  .bottom-illustration {
-    float: none;
-    display: block;
-    margin: 60px auto;
-  }
-
-  .ayat {
-    font-size: 1.4rem;
-  }
-
-  .groom {
-    font-size: 2.2rem;
-  }
+/* RESPONSIVE */
+@media(max-width:768px){
+.flip-countdown{gap:10px}
+.flip-box{width:60px}
+.bride,.groom{font-size:2rem}
 }
