@@ -31,19 +31,32 @@
   <a href="https://maps.google.com" target="_blank">Lihat Lokasi</a>
 </section>
 
-<a id="rsvpBtn" class="rsvp-button">
-  Konfirmasi Kehadiran
-</a>
+<section class="rsvp-section">
+  <h2>Konfirmasi Kehadiran</h2>
 
-<!-- RSVP Modal -->
-<div id="rsvpModal" class="rsvp-modal">
-  <div class="rsvp-container">
-    <button id="closeModal" class="close-btn">✕</button>
-    <iframe id="formFrame"></iframe>
-  </div>
-</div>
+  <form id="rsvpForm">
+    <input type="text" id="nama" placeholder="Nama Lengkap" required>
 
-<!-- Background Music -->
+    <select id="kategori">
+      <option value="Teman">Teman</option>
+      <option value="Rekan Kerja">Rekan Kerja</option>
+      <option value="Saudara">Saudara</option>
+    </select>
+
+    <select id="kehadiran" required>
+      <option value="">Pilih Kehadiran</option>
+      <option value="Hadir">Hadir</option>
+      <option value="Berhalangan">Berhalangan</option>
+    </select>
+
+    <textarea id="ucapan" placeholder="Doa & Ucapan"></textarea>
+
+    <button type="submit">Kirim</button>
+  </form>
+
+  <p id="formMessage"></p>
+</section>
+
 <audio id="bgMusic" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>

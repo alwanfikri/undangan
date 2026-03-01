@@ -1,51 +1,19 @@
-body {
+/* ===== RESET ===== */
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: 'Georgia', serif;
-  text-align: center;
   background: #f4f1ed;
   color: #333;
+  text-align: center;
+  line-height: 1.6;
 }
 
-.hero {
-  height: 100vh;
-  background: linear-gradient(to bottom, #111, #333);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 20px;
-}
-
-.hero h1 {
-  font-size: 3em;
-  letter-spacing: 3px;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  font-size: 1.2em;
-  opacity: 0.8;
-}
-
-#countdown {
-  margin-top: 20px;
-  font-size: 1.5em;
-}
-
-.info {
-  padding: 60px 20px;
-}
-
-a {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: #111;
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-}
-/* Opening */
+/* ===== OPENING SCREEN ===== */
 .opening {
   position: fixed;
   top: 0;
@@ -57,88 +25,172 @@ a {
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.6s ease;
 }
 
 .opening-content {
-  text-align: center;
   color: white;
+}
+
+.opening h2 {
+  font-size: 2rem;
+  letter-spacing: 2px;
 }
 
 .opening button {
   margin-top: 20px;
-  padding: 15px 30px;
-  font-size: 18px;
+  padding: 14px 30px;
+  font-size: 16px;
   background: white;
   border: none;
   cursor: pointer;
+  transition: 0.3s ease;
 }
 
-/* Hero */
+.opening button:hover {
+  background: #ddd;
+}
+
+/* ===== GREETING ===== */
+#guest {
+  margin-top: 20px;
+  font-style: italic;
+  font-size: 1rem;
+}
+
+/* ===== HERO ===== */
+.hero {
+  padding: 100px 20px;
+  background: linear-gradient(to bottom, #111, #333);
+  color: white;
+}
+
 .hero h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
 }
 
-@media (max-width: 600px) {
+.hero p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+#countdown {
+  margin-top: 25px;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+/* ===== DETAILS ===== */
+.details {
+  padding: 60px 20px;
+  background: #ffffff;
+}
+
+.details h2 {
+  margin-bottom: 15px;
+}
+
+.details p {
+  margin-bottom: 8px;
+}
+
+.details a {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #111;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.details a:hover {
+  background: #444;
+}
+
+/* ===== RSVP SECTION ===== */
+.rsvp-section {
+  padding: 70px 20px;
+  background: #f4f1ed;
+}
+
+.rsvp-section h2 {
+  margin-bottom: 30px;
+  font-size: 1.6rem;
+}
+
+form {
+  max-width: 420px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+input,
+select,
+textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background: white;
+}
+
+textarea {
+  resize: none;
+  height: 90px;
+}
+
+button[type="submit"] {
+  padding: 14px;
+  background: #111;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background: #444;
+}
+
+#formMessage {
+  margin-top: 20px;
+  font-size: 0.95rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  #countdown {
+    font-size: 1.2rem;
+  }
+
+  .details,
+  .rsvp-section {
+    padding: 50px 15px;
+  }
+}
+
+@media (max-width: 480px) {
   .hero h1 {
     font-size: 1.8rem;
   }
 
-  .hero p {
-    font-size: 0.9rem;
+  .opening h2 {
+    font-size: 1.6rem;
   }
-}
 
-/* RSVP Button */
-.rsvp-button {
-  display: inline-block;
-  margin: 40px auto;
-  padding: 12px 25px;
-  background: #111;
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/* RSVP Modal */
-.rsvp-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.8);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 10000;
-}
-
-.rsvp-modal.active {
-  display: flex;
-}
-
-.rsvp-container {
-  width: 95%;
-  height: 90%;
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-}
-
-#formFrame {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 22px;
-  background: none;
-  border: none;
-  cursor: pointer;
+  form {
+    gap: 15px;
+  }
 }

@@ -1,25 +1,16 @@
-// === Ambil Nama dari URL ===
+// === Apps Script Endpoint ===
+const scriptURL = "https://script.google.com/macros/s/AKfycbxzaoGM7qpX3q1kvsCzvgUU1NV4oe6BBksLsdEW49DoMB5nCiTj8ycMVVBUMpybgYA1/exec";
+
+// === Ambil Nama dari URL (?to=Nama) ===
 const params = new URLSearchParams(window.location.search);
 const guestName = params.get("to");
 
-// === Google Form Base ===
-const formBase =
-  "https://docs.google.com/forms/d/e/1FAIpQLSedn56DFoxM-TF0PJf06QG5aZoA-Fq0wEPfjdg_skdqCaUEzg/viewform?embedded=true&entry.385965829=";
-
-// === Elements ===
-const rsvpBtn = document.getElementById("rsvpBtn");
+const namaInput = document.getElementById("nama");
 const guestElement = document.getElementById("guest");
-const modal = document.getElementById("rsvpModal");
-const closeModal = document.getElementById("closeModal");
-const formFrame = document.getElementById("formFrame");
 
-// === Greeting + Set Form Source ===
 if (guestName) {
   guestElement.innerText = "Kepada Yth. " + guestName;
-  formFrame.src = formBase + encodeURIComponent(guestName);
-} else {
-  formFrame.src =
-    "https://docs.google.com/forms/d/e/1FAIpQLSedn56DFoxM-TF0PJf06QG5aZoA-Fq0wEPfjdg_skdqCaUEzg/viewform?embedded=true";
+  namaInput.value = guestName;
 }
 
 // === Countdown ===
@@ -52,12 +43,31 @@ openBtn.addEventListener("click", () => {
   }, 500);
 });
 
-// === Open RSVP Modal ===
-rsvpBtn.addEventListener("click", () => {
-  modal.classList.add("active");
-});
+// === Submit RSVP ===
+const form = document.getElementById("rsvpForm");
+const message = document.getElementById("formMessage");
 
-// === Close RSVP Modal ===
-closeModal.addEventListener("click", () => {
-  modal.classList.remove("active");
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const data = {
+    nama: document.getElementById("nama").value,
+    kategori: document.getElementById("kategori").value,
+    kehadiran: document.getElementById("kehadiran").value,
+    ucapan: document.getElementById("ucapan").value
+  };
+
+  message.innerText = "Mengirim...";
+
+  try {
+    await fetch(scriptURL, {
+      method: "POST",
+      body: JSON.stringify(data)
+    });
+
+    message.innerText = "Terima kasih atas konfirmasinya 🤍";
+    form.reset();
+  } catch (error) {
+    message.innerText = "Terjadi kesalahan. Coba lagi.";
+  }
 });
