@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Khansa & Fikri</title>
 
-  <!-- Arabic Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,57 +15,52 @@
   <div class="opening-content">
     <p class="opening-small">Kepada Yth.</p>
     <h3 id="openingGuest"></h3>
-
     <img src="pic1.png" class="opening-image">
-
     <button id="openBtn">Buka Undangan</button>
   </div>
 </div>
 
-<!-- HERO -->
-<section class="hero">
-  <img src="pic1.png" class="hero-image">
-  <p class="hero-sub">We are getting married</p>
-
-  <div id="countdown">
-    <div class="count-box"><span id="days">00</span><small>Days</small></div>
-    <div class="count-box"><span id="hours">00</span><small>Hours</small></div>
-    <div class="count-box"><span id="minutes">00</span><small>Minutes</small></div>
-    <div class="count-box"><span id="seconds">00</span><small>Seconds</small></div>
-  </div>
-</section>
-
-<!-- BISMI & AYAT -->
+<!-- ISLAMIC INTRO -->
 <section class="bismillah-section">
 
-  <p class="arabic">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+  <p class="bismillah arabic">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
 
-  <p class="arabic salam">
-  السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهُ
+  <p class="salam arabic">
+    السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهُ
   </p>
 
-  <p class="arabic ayat">
-  وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا
-  لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً ۚ
-  إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
+  <p class="ayat arabic">
+    وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا
+    لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً ۚ
+    إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
   </p>
 
   <p class="translation">
-  “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan
-  dari jenismu sendiri agar kamu merasa tenteram kepadanya,
-  dan Dia menjadikan di antaramu rasa kasih dan sayang.”
-  <br>(QS. Ar-Rum: 21)
+    “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan dari jenismu sendiri agar kamu merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang.”
+    <br>(QS. Ar-Rum: 21)
   </p>
 
   <p class="intro-text">
-  Dengan memohon rahmat dan ridha Allah Subhanahu wa Ta’ala,
-  kami bermaksud menyelenggarakan akad dan resepsi pernikahan putra-putri kami.
+    Dengan memohon rahmat dan ridha Allah Subhanahu wa Ta’ala,
+    kami bermaksud menyelenggarakan akad dan resepsi pernikahan putra-putri kami.
   </p>
 
   <h2 class="bride">Khansa Ufahira</h2>
-  <p class="and">&</p>
-  <h1 class="groom">Muhammad Alwan Fikri</h1>
+  <div class="ampersand">&</div>
+  <h2 class="groom">Muhammad Alwan Fikri</h2>
 
+</section>
+
+<!-- ROMANTIC TAGLINE -->
+<section class="hero">
+  <p class="hero-sub">We are getting married</p>
+
+  <div id="countdown" class="flip-countdown">
+    <div class="flip-box"><span id="days">00</span><small>Days</small></div>
+    <div class="flip-box"><span id="hours">00</span><small>Hours</small></div>
+    <div class="flip-box"><span id="minutes">00</span><small>Minutes</small></div>
+    <div class="flip-box"><span id="seconds">00</span><small>Seconds</small></div>
+  </div>
 </section>
 
 <h2 class="section-title">Event Details</h2>
@@ -79,40 +72,40 @@
   </div>
 </section>
 
-<h2 class="section-title">RSVP</h2>
-
+<!-- MAP + RSVP -->
 <section class="rsvp-map-wrapper">
 
-  <div class="rsvp-section">
-    <form id="rsvpForm">
-      <input type="text" id="nama" placeholder="Your Name" required>
-
-      <select id="kategori">
-        <option value="Teman">Teman</option>
-        <option value="Rekan Kerja">Rekan Kerja</option>
-        <option value="Saudara">Saudara</option>
-      </select>
-
-      <select id="kehadiran" required>
-        <option value="">Will you attend?</option>
-        <option value="Hadir">Hadir</option>
-        <option value="Berhalangan">Berhalangan</option>
-      </select>
-
-      <textarea id="ucapan" placeholder="Your Wishes"></textarea>
-
-      <button type="submit">Submit</button>
-    </form>
-    <p id="formMessage"></p>
-  </div>
-
-  <div class="map-container small-map">
+  <div class="small-map">
     <iframe
       src="https://maps.google.com/maps?q=-6.376053268106767,106.85938933615078&z=15&output=embed"
       loading="lazy">
     </iframe>
   </div>
 
+  <div class="rsvp-section">
+    <form id="rsvpForm">
+      <input type="text" id="nama" placeholder="Your Name" required>
+      <select id="kehadiran" required>
+        <option value="">Will you attend?</option>
+        <option value="Hadir">Hadir</option>
+        <option value="Berhalangan">Berhalangan</option>
+      </select>
+      <textarea id="ucapan" placeholder="Your Wishes"></textarea>
+      <button type="submit">Submit</button>
+    </form>
+    <p id="formMessage"></p>
+  </div>
+
+</section>
+
+<!-- GALLERY PLACEHOLDER -->
+<section class="gallery">
+  <h2 class="section-title">Gallery</h2>
+  <div class="gallery-grid">
+    <div class="photo-placeholder">Photo</div>
+    <div class="photo-placeholder">Photo</div>
+    <div class="photo-placeholder">Photo</div>
+  </div>
 </section>
 
 <img src="pic2.png" class="bottom-illustration">

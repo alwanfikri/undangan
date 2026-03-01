@@ -1,3 +1,6 @@
+/* =========================
+   RESET
+========================= */
 * {
   margin: 0;
   padding: 0;
@@ -6,13 +9,16 @@
 
 body {
   background: #f3ede6;
-  font-family: Georgia, serif;
+  font-family: 'Playfair Display', serif;
   color: #6f5c4f;
   text-align: center;
-  line-height: 1.8;
+  line-height: 1.9;
+  overflow-x: hidden;
 }
 
-/* OPENING */
+/* =========================
+   OPENING
+========================= */
 .opening {
   position: fixed;
   inset: 0;
@@ -25,96 +31,191 @@ body {
 }
 
 .opening-content {
-  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.opening-small {
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+#openingGuest {
+  font-size: 1.4rem;
+  margin-bottom: 25px;
+}
+
 .opening-image {
-  width: 220px;
+  width: 230px;
   margin: 30px 0;
   display: block;
 }
 
 .opening button {
-  padding: 14px 35px;
+  padding: 14px 40px;
   background: #b79b85;
   border: none;
   color: white;
   cursor: pointer;
+  transition: 0.3s ease;
 }
 
-/* HERO */
-.hero {
-  padding: 120px 20px 60px;
+.opening button:hover {
+  background: #a88973;
 }
 
-.hero-image {
-  width: 260px;
-  margin-bottom: 20px;
-}
-
-/* ARABIC SECTION */
+/* =========================
+   ISLAMIC SECTION
+========================= */
 .bismillah-section {
-  padding: 100px 20px;
+  padding: 120px 20px 80px;
   max-width: 800px;
   margin: auto;
 }
 
 .arabic {
   font-family: 'Amiri', serif;
+}
+
+.bismillah {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+
+.salam {
   font-size: 1.8rem;
-  margin-bottom: 25px;
+  margin-bottom: 50px;
 }
 
 .ayat {
-  font-size: 2rem;
-  line-height: 2.5;
-  margin: 60px 0;
+  font-size: 1.6rem;
+  line-height: 2.3;
+  margin: 30px 0 40px;
 }
 
 .translation {
   font-size: 0.95rem;
-  margin-bottom: 50px;
+  opacity: 0.8;
+  margin-bottom: 60px;
 }
 
 .intro-text {
-  margin-bottom: 50px;
+  margin-bottom: 60px;
+  font-size: 1rem;
 }
 
+/* =========================
+   NAMES
+========================= */
 .bride {
-  font-size: 1.8rem;
-  margin-top: 40px;
+  font-size: 2rem;
+  font-weight: 400;
 }
 
-.and {
-  margin: 10px 0;
+.ampersand {
+  font-size: 3.5rem;
+  margin: 15px 0;
+  color: #b79b85;
+  font-weight: 600;
 }
 
 .groom {
-  font-size: 2.8rem;
-  margin-top: 10px;
+  font-size: 2.5rem;
+  font-weight: 600;
 }
 
-/* RSVP + MAP */
+/* =========================
+   HERO TAGLINE
+========================= */
+.hero {
+  padding: 80px 20px;
+}
+
+.hero-sub {
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+}
+
+/* =========================
+   FLIP COUNTDOWN
+========================= */
+.flip-countdown {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.flip-box {
+  background: white;
+  border-radius: 12px;
+  padding: 20px 15px;
+  width: 90px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.flip-box:hover {
+  transform: translateY(-5px);
+}
+
+.flip-box span {
+  font-size: 2.2rem;
+  font-weight: bold;
+  display: block;
+}
+
+.flip-box small {
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  opacity: 0.6;
+}
+
+/* =========================
+   SECTION TITLE
+========================= */
+.section-title {
+  margin: 90px 0 40px;
+  font-size: 1.3rem;
+  letter-spacing: 3px;
+}
+
+/* =========================
+   EVENT DETAILS
+========================= */
+.details {
+  padding: 20px;
+}
+
+.detail-card {
+  background: white;
+  border: 1px solid #e4d8cd;
+  padding: 30px;
+  border-radius: 14px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+/* =========================
+   MAP + RSVP WRAPPER
+========================= */
 .rsvp-map-wrapper {
   display: flex;
   justify-content: center;
-  gap: 40px;
-  padding: 60px 20px;
   align-items: flex-start;
-}
-
-.rsvp-section {
-  flex: 1;
-  max-width: 420px;
+  gap: 40px;
+  padding: 80px 20px;
+  max-width: 1100px;
+  margin: auto;
 }
 
 .small-map {
   flex: 1;
-  max-width: 400px;
-  border-radius: 12px;
+  max-width: 450px;
+  border-radius: 14px;
   overflow: hidden;
   border: 1px solid #e4d8cd;
 }
@@ -125,22 +226,36 @@ body {
   border: none;
 }
 
-/* FORM */
+.rsvp-section {
+  flex: 1;
+  max-width: 450px;
+}
+
+/* =========================
+   FORM
+========================= */
 form {
   background: white;
-  padding: 30px;
-  border-radius: 12px;
+  padding: 35px;
+  border-radius: 14px;
   border: 1px solid #e4d8cd;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
 }
 
 input, select, textarea {
   border: none;
   border-bottom: 1px solid #e4d8cd;
   padding: 10px;
+  font-size: 14px;
   background: transparent;
+  outline: none;
+}
+
+textarea {
+  resize: none;
+  height: 90px;
 }
 
 button[type="submit"] {
@@ -148,18 +263,65 @@ button[type="submit"] {
   background: #b79b85;
   color: white;
   border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
-/* BOTTOM IMAGE */
-.bottom-illustration {
+button[type="submit"]:hover {
+  background: #a88973;
+}
+
+#formMessage {
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+/* =========================
+   GALLERY
+========================= */
+.gallery {
+  padding: 100px 20px;
+}
+
+.gallery-grid {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.photo-placeholder {
   width: 220px;
+  height: 220px;
+  background: #e8ded5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b79b85;
+  font-size: 0.9rem;
+  border-radius: 14px;
+  transition: 0.3s ease;
+}
+
+.photo-placeholder:hover {
+  background: #d9cbbf;
+}
+
+/* =========================
+   BOTTOM ILLUSTRATION
+========================= */
+.bottom-illustration {
+  width: 230px;
   float: right;
-  margin: 40px 5% 60px 0;
+  margin: 60px 6% 80px 0;
   opacity: 0.8;
 }
 
-/* RESPONSIVE */
+/* =========================
+   RESPONSIVE
+========================= */
 @media (max-width: 900px) {
+
   .rsvp-map-wrapper {
     flex-direction: column;
     align-items: center;
@@ -172,6 +334,14 @@ button[type="submit"] {
   .bottom-illustration {
     float: none;
     display: block;
-    margin: 40px auto;
+    margin: 60px auto;
+  }
+
+  .ayat {
+    font-size: 1.4rem;
+  }
+
+  .groom {
+    font-size: 2.2rem;
   }
 }
