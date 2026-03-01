@@ -6,25 +6,39 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<!-- Opening Screen -->
+<div id="opening" class="opening">
+  <div class="opening-content">
+    <h2>Khansa & Fikri</h2>
+    <button id="openBtn">Buka Undangan</button>
+  </div>
+</div>
+
 <h3 id="guest"></h3>
-  <section class="hero">
-    <h1>Khansa & Fikri</h1>
-    <p>We are getting married</p>
-    <div id="countdown"></div>
-  </section>
 
-  <section class="details">
-    <h2>Akad & Resepsi</h2>
-    <p>Sabtu, 13 Juni 2026</p>
-    <p>Depok, Jawa Barat</p>
-    <a href="https://maps.google.com" target="_blank">Lihat Lokasi</a>
-  </section>
-  <a id="rsvpBtn" target="_blank">Konfirmasi Kehadiran</a>
+<section class="hero">
+  <h1>Khansa & Fikri</h1>
+  <p>We are getting married</p>
+  <div id="countdown"></div>
+</section>
 
-  <script src="script.js"></script>
-  <audio autoplay loop>
-  <source src="musik.mp3" type="audio/mpeg">
+<section class="details">
+  <h2>Akad & Resepsi</h2>
+  <p>Sabtu, 13 Juni 2026</p>
+  <p>Depok, Jawa Barat</p>
+  <a href="https://maps.google.com" target="_blank">Lihat Lokasi</a>
+</section>
+
+<a id="rsvpBtn" target="_blank" class="rsvp-button">
+  Konfirmasi Kehadiran
+</a>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
 </audio>
 
+<script src="script.js"></script>
 </body>
 </html>
