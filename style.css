@@ -77,7 +77,7 @@ border-radius:50%;
 
 /* NAME FRAME */
 .name-frame{
-margin:60px auto;
+margin:40px auto;
 padding:40px 20px;
 border:1px solid #e0d6cd;
 border-radius:16px;
@@ -105,7 +105,7 @@ font-style:italic;
 }
 
 /* HERO */
-.hero{padding:80px 20px;transition:transform .2s linear}
+.hero{padding:50px 20px 40px;transition:transform .2s linear}
 
 .hero-sub{
 letter-spacing:2px;
@@ -141,7 +141,7 @@ opacity:.6;
 
 /* SECTION TITLE */
 .section-title{
-margin:90px 0 40px;
+margin:50px 0 25px;
 letter-spacing:3px;
 position:relative;
 display:inline-block;
@@ -173,7 +173,7 @@ margin:auto;
 
 /* MAP + RSVP */
 .map-section{
-padding:60px 20px;
+padding:40px 20px;
 }
 
 .map-section iframe{
@@ -185,7 +185,7 @@ border:1px solid #e4d8cd;
 }
 
 .rsvp-section{
-padding:60px 20px;
+padding:40px 20px;
 max-width:500px;
 margin:auto;
 }
@@ -275,7 +275,7 @@ padding-bottom:0;
 }
 
 .gallery{
-padding:100px 20px 20px;   /* bawah diperkecil */
+padding:50px 20px 20px;   /* bawah diperkecil */
 }
 /* PIC1 SMALL ABOVE BISMILLAH */
 .bismillah-image{
@@ -283,6 +283,9 @@ width:120px;          /* jauh lebih kecil dari opening */
 margin:30px auto 40px;
 display:block;
 opacity:.85;
+}
+.bismillah-section{
+padding:40px 20px 30px;
 }
 /* =========================
    MESSAGE BOARD
