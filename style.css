@@ -51,7 +51,7 @@ width:70%;
 max-width:400px;
 height:1px;
 background:#d8cfc6;
-margin:60px auto;
+margin:10px auto;
 position:relative;
 }
 
@@ -70,8 +70,8 @@ border-radius:50%;
 /* ARABIC */
 .arabic{font-family:'Amiri',serif}
 
-.bismillah{font-size:1.4rem;margin-bottom:3px}
-.salam{font-size:1.8rem;margin-bottom:10px}
+.bismillah{font-size:1.4rem;margin-bottom:1px}
+.salam{font-size:1.8rem;margin-bottom:1px}
 .ayat{font-size:1.5rem;line-height:2.2;margin:15px 0}
 .translation{font-size:.95rem;margin-bottom:50px}
 
