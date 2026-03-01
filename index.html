@@ -93,15 +93,35 @@
 
 <div class="rsvp-section">
 <form id="rsvpForm">
-<input type="text" id="nama" placeholder="Your Name" required>
+
+<input type="text" id="nama" placeholder="Nama Lengkap" required>
+
+<select id="kategori" required>
+<option value="">Kategori</option>
+<option value="Keluarga">Keluarga</option>
+<option value="Sahabat">Sahabat</option>
+<option value="Rekan Kerja">Rekan Kerja</option>
+<option value="Teman">Teman</option>
+</select>
+
 <select id="kehadiran" required>
-<option value="">Will you attend?</option>
+<option value="">Kesediaan Hadir</option>
 <option value="Hadir">Hadir</option>
 <option value="Berhalangan">Berhalangan</option>
 </select>
-<textarea id="ucapan" placeholder="Your Wishes"></textarea>
-<button type="submit">Submit</button>
+
+<textarea id="ucapan" placeholder="Doa dan Ucapan"></textarea>
+
+<button type="submit">Kirim</button>
+
 </form>
+
+<p id="formMessage"></p>
+
+<div class="ucapan-box">
+<h3>Doa & Ucapan</h3>
+<div id="ucapanList"></div>
+</div>
 <p id="formMessage"></p>
 </div>
 
