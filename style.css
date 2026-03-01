@@ -194,3 +194,31 @@ button[type="submit"]:hover {
     gap: 15px;
   }
 }
+/* ===== Opening Guest Styling ===== */
+.opening-small {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+#openingGuest {
+  font-size: 1.4rem;
+  margin-bottom: 25px;
+  font-weight: normal;
+}
+
+/* ===== Fade In Animation ===== */
+.hero,
+.details,
+.rsvp-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+}
+
+body.loaded .hero,
+body.loaded .details,
+body.loaded .rsvp-section {
+  opacity: 1;
+  transform: translateY(0);
+}

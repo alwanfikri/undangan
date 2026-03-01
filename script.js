@@ -5,12 +5,14 @@ const scriptURL = "https://script.google.com/macros/s/AKfycbxzaoGM7qpX3q1kvsCzvg
 const params = new URLSearchParams(window.location.search);
 const guestName = params.get("to");
 
+const openingGuest = document.getElementById("openingGuest");
 const namaInput = document.getElementById("nama");
-const guestElement = document.getElementById("guest");
 
 if (guestName) {
-  guestElement.innerText = "Kepada Yth. " + guestName;
+  openingGuest.innerText = guestName;
   namaInput.value = guestName;
+} else {
+  openingGuest.innerText = "Tamu Undangan";
 }
 
 // === Countdown ===
@@ -38,9 +40,11 @@ const bgMusic = document.getElementById("bgMusic");
 openBtn.addEventListener("click", () => {
   bgMusic.play();
   opening.style.opacity = "0";
+
   setTimeout(() => {
     opening.style.display = "none";
-  }, 500);
+    document.body.classList.add("loaded");
+  }, 700);
 });
 
 // === Submit RSVP ===
