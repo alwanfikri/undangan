@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Khansa & Fikri</title>
+
+  <!-- Arabic Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -33,55 +37,84 @@
   </div>
 </section>
 
+<!-- BISMI & AYAT -->
+<section class="bismillah-section">
+
+  <p class="arabic">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+
+  <p class="arabic salam">
+  السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهُ
+  </p>
+
+  <p class="arabic ayat">
+  وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا
+  لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً ۚ
+  إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
+  </p>
+
+  <p class="translation">
+  “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan
+  dari jenismu sendiri agar kamu merasa tenteram kepadanya,
+  dan Dia menjadikan di antaramu rasa kasih dan sayang.”
+  <br>(QS. Ar-Rum: 21)
+  </p>
+
+  <p class="intro-text">
+  Dengan memohon rahmat dan ridha Allah Subhanahu wa Ta’ala,
+  kami bermaksud menyelenggarakan akad dan resepsi pernikahan putra-putri kami.
+  </p>
+
+  <h2 class="bride">Khansa Ufahira</h2>
+  <p class="and">&</p>
+  <h1 class="groom">Muhammad Alwan Fikri</h1>
+
+</section>
+
 <h2 class="section-title">Event Details</h2>
 
 <section class="details">
   <div class="detail-card">
-    <p>Wedding</p>
     <p>Sabtu, 13 Juni 2026</p>
-  </div>
-
-  <div class="detail-card">
-    <p>Location</p>
     <p>Depok, Jawa Barat</p>
   </div>
 </section>
 
-<!-- MAP -->
-<div class="map-container">
-  <iframe
-    src="https://maps.google.com/maps?q=-6.376053268106767,106.85938933615078&z=15&output=embed"
-    loading="lazy">
-  </iframe>
-</div>
-
 <h2 class="section-title">RSVP</h2>
 
-<section class="rsvp-section">
-  <form id="rsvpForm">
-    <input type="text" id="nama" placeholder="Your Name" required>
+<section class="rsvp-map-wrapper">
 
-    <select id="kategori">
-      <option value="Teman">Teman</option>
-      <option value="Rekan Kerja">Rekan Kerja</option>
-      <option value="Saudara">Saudara</option>
-    </select>
+  <div class="rsvp-section">
+    <form id="rsvpForm">
+      <input type="text" id="nama" placeholder="Your Name" required>
 
-    <select id="kehadiran" required>
-      <option value="">Will you attend?</option>
-      <option value="Hadir">Hadir</option>
-      <option value="Berhalangan">Berhalangan</option>
-    </select>
+      <select id="kategori">
+        <option value="Teman">Teman</option>
+        <option value="Rekan Kerja">Rekan Kerja</option>
+        <option value="Saudara">Saudara</option>
+      </select>
 
-    <textarea id="ucapan" placeholder="Your Wishes"></textarea>
+      <select id="kehadiran" required>
+        <option value="">Will you attend?</option>
+        <option value="Hadir">Hadir</option>
+        <option value="Berhalangan">Berhalangan</option>
+      </select>
 
-    <button type="submit">Submit</button>
-  </form>
+      <textarea id="ucapan" placeholder="Your Wishes"></textarea>
 
-  <p id="formMessage"></p>
+      <button type="submit">Submit</button>
+    </form>
+    <p id="formMessage"></p>
+  </div>
+
+  <div class="map-container small-map">
+    <iframe
+      src="https://maps.google.com/maps?q=-6.376053268106767,106.85938933615078&z=15&output=embed"
+      loading="lazy">
+    </iframe>
+  </div>
+
 </section>
 
-<!-- BOTTOM ILLUSTRATION -->
 <img src="pic2.png" class="bottom-illustration">
 
 <audio id="bgMusic" loop>
