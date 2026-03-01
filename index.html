@@ -8,34 +8,58 @@
 </head>
 <body>
 
-<!-- Opening Screen -->
+<!-- OPENING -->
 <div id="opening" class="opening">
   <div class="opening-content">
     <p class="opening-small">Kepada Yth.</p>
     <h3 id="openingGuest"></h3>
-    <h2>Khansa & Fikri</h2>
+
+    <img src="pic1.png" class="opening-image">
+
     <button id="openBtn">Buka Undangan</button>
   </div>
 </div>
 
+<!-- HERO -->
 <section class="hero">
-  <h1>Khansa & Fikri</h1>
-  <p>We are getting married</p>
-  <div id="countdown"></div>
+  <img src="pic1.png" class="hero-image">
+  <p class="hero-sub">We are getting married</p>
+
+  <div id="countdown">
+    <div class="count-box"><span id="days">00</span><small>Days</small></div>
+    <div class="count-box"><span id="hours">00</span><small>Hours</small></div>
+    <div class="count-box"><span id="minutes">00</span><small>Minutes</small></div>
+    <div class="count-box"><span id="seconds">00</span><small>Seconds</small></div>
+  </div>
 </section>
+
+<h2 class="section-title">Event Details</h2>
 
 <section class="details">
-  <h2>Akad & Resepsi</h2>
-  <p>Sabtu, 13 Juni 2026</p>
-  <p>Depok, Jawa Barat</p>
-  <a href="https://maps.google.com" target="_blank">Lihat Lokasi</a>
+  <div class="detail-card">
+    <p>Wedding</p>
+    <p>Sabtu, 13 Juni 2026</p>
+  </div>
+
+  <div class="detail-card">
+    <p>Location</p>
+    <p>Depok, Jawa Barat</p>
+  </div>
 </section>
 
-<section class="rsvp-section">
-  <h2>Konfirmasi Kehadiran</h2>
+<!-- MAP -->
+<div class="map-container">
+  <iframe
+    src="https://maps.google.com/maps?q=-6.376053268106767,106.85938933615078&z=15&output=embed"
+    loading="lazy">
+  </iframe>
+</div>
 
+<h2 class="section-title">RSVP</h2>
+
+<section class="rsvp-section">
   <form id="rsvpForm">
-    <input type="text" id="nama" placeholder="Nama Lengkap" required>
+    <input type="text" id="nama" placeholder="Your Name" required>
 
     <select id="kategori">
       <option value="Teman">Teman</option>
@@ -44,18 +68,21 @@
     </select>
 
     <select id="kehadiran" required>
-      <option value="">Pilih Kehadiran</option>
+      <option value="">Will you attend?</option>
       <option value="Hadir">Hadir</option>
       <option value="Berhalangan">Berhalangan</option>
     </select>
 
-    <textarea id="ucapan" placeholder="Doa & Ucapan"></textarea>
+    <textarea id="ucapan" placeholder="Your Wishes"></textarea>
 
-    <button type="submit">Kirim</button>
+    <button type="submit">Submit</button>
   </form>
 
   <p id="formMessage"></p>
 </section>
+
+<!-- BOTTOM ILLUSTRATION -->
+<img src="pic2.png" class="bottom-illustration">
 
 <audio id="bgMusic" loop>
   <source src="music.mp3" type="audio/mpeg">

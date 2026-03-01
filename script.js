@@ -1,7 +1,5 @@
-// === Apps Script Endpoint ===
 const scriptURL = "https://script.google.com/macros/s/AKfycbxzaoGM7qpX3q1kvsCzvgUU1NV4oe6BBksLsdEW49DoMB5nCiTj8ycMVVBUMpybgYA1/exec";
 
-// === Ambil Nama dari URL (?to=Nama) ===
 const params = new URLSearchParams(window.location.search);
 const guestName = params.get("to");
 
@@ -15,7 +13,6 @@ if (guestName) {
   openingGuest.innerText = "Tamu Undangan";
 }
 
-// === Countdown ===
 const targetDate = new Date("June 13, 2026 08:00:00").getTime();
 
 setInterval(() => {
@@ -23,16 +20,20 @@ setInterval(() => {
   const distance = targetDate - now;
 
   if (distance > 0) {
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    document.getElementById("countdown").innerText =
-      days + " Hari Lagi";
-  } else {
-    document.getElementById("countdown").innerText =
-      "Hari Bahagia Telah Tiba";
+    document.getElementById("days").innerText =
+      Math.floor(distance / (1000 * 60 * 60 * 24));
+
+    document.getElementById("hours").innerText =
+      Math.floor((distance / (1000 * 60 * 60)) % 24);
+
+    document.getElementById("minutes").innerText =
+      Math.floor((distance / (1000 * 60)) % 60);
+
+    document.getElementById("seconds").innerText =
+      Math.floor((distance / 1000) % 60);
   }
 }, 1000);
 
-// === Opening + Music ===
 const openBtn = document.getElementById("openBtn");
 const opening = document.getElementById("opening");
 const bgMusic = document.getElementById("bgMusic");
@@ -40,14 +41,11 @@ const bgMusic = document.getElementById("bgMusic");
 openBtn.addEventListener("click", () => {
   bgMusic.play();
   opening.style.opacity = "0";
-
   setTimeout(() => {
     opening.style.display = "none";
-    document.body.classList.add("loaded");
-  }, 700);
+  }, 800);
 });
 
-// === Submit RSVP ===
 const form = document.getElementById("rsvpForm");
 const message = document.getElementById("formMessage");
 
@@ -55,13 +53,13 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const data = {
-    nama: document.getElementById("nama").value,
+    nama: namaInput.value,
     kategori: document.getElementById("kategori").value,
     kehadiran: document.getElementById("kehadiran").value,
     ucapan: document.getElementById("ucapan").value
   };
 
-  message.innerText = "Mengirim...";
+  message.innerText = "Sending...";
 
   try {
     await fetch(scriptURL, {
@@ -69,9 +67,9 @@ form.addEventListener("submit", async (e) => {
       body: JSON.stringify(data)
     });
 
-    message.innerText = "Terima kasih atas konfirmasinya 🤍";
+    message.innerText = "Thank you for your confirmation 🤍";
     form.reset();
   } catch (error) {
-    message.innerText = "Terjadi kesalahan. Coba lagi.";
+    message.innerText = "Something went wrong.";
   }
 });
