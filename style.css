@@ -264,11 +264,14 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* BOTTOM */
+/* BOTTOM ORNAMENT FIXED TO BOTTOM */
 .bottom-illustration{
-width:200px;
-margin:60px auto;
+width:140px;              /* lebih kecil */
+display:block;
+margin:0 auto;            /* hapus margin atas */
 opacity:.8;
+position:relative;
+bottom:0;
 }
 
 /* RESPONSIVE */
@@ -276,4 +279,18 @@ opacity:.8;
 .flip-countdown{gap:10px}
 .flip-box{width:60px}
 .bride,.groom{font-size:2rem}
+}
+body{
+padding-bottom:0;
+}
+
+.gallery{
+padding:100px 20px 20px;   /* bawah diperkecil */
+}
+/* PIC1 SMALL ABOVE BISMILLAH */
+.bismillah-image{
+width:120px;          /* jauh lebih kecil dari opening */
+margin:30px auto 40px;
+display:block;
+opacity:.85;
 }
