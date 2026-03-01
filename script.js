@@ -9,7 +9,7 @@ const formBase =
 const rsvpBtn = document.getElementById("rsvpBtn");
 const guestElement = document.getElementById("guest");
 
-// === Personal Greeting + RSVP Link ===
+// === Personal Greeting + Set RSVP Link ===
 if (guestName) {
   guestElement.innerText = "Kepada Yth. " + guestName;
   rsvpBtn.href = formBase + encodeURIComponent(guestName);
@@ -46,5 +46,23 @@ openBtn.addEventListener("click", () => {
   opening.style.opacity = "0";
   setTimeout(() => {
     opening.style.display = "none";
+  }, 500);
+});
+
+// === Fade Transition Before Opening Form ===
+const overlay = document.createElement("div");
+overlay.classList.add("fade-overlay");
+document.body.appendChild(overlay);
+
+rsvpBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  overlay.classList.add("active");
+  rsvpBtn.innerText = "Membuka Form...";
+
+  setTimeout(() => {
+    window.open(rsvpBtn.href, "_blank");
+    overlay.classList.remove("active");
+    rsvpBtn.innerText = "Konfirmasi Kehadiran";
   }, 500);
 });

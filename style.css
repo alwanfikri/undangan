@@ -80,4 +80,22 @@ a {
   background: #111;
   color: white;
   text-decoration: none;
+  cursor: pointer;
+}
+
+.fade-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  z-index: 9998;
+}
+
+.fade-overlay.active {
+  opacity: 0.5;
 }
