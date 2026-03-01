@@ -32,6 +32,14 @@ flex-direction:column;
 align-items:center;
 }
 
+.opening-bride{
+width:230px;
+margin:30px 0;
+font-size:3.5rem;
+font-weight:500;
+letter-spacing:1px;
+}
+
 .opening-image{
 width:230px;
 margin:30px 0;
