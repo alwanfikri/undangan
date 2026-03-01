@@ -1,22 +1,25 @@
-// === Ambil Nama dari URL (?to=Nama) ===
+// === Ambil Nama dari URL ===
 const params = new URLSearchParams(window.location.search);
 const guestName = params.get("to");
 
-// === Google Form Config ===
+// === Google Form Base ===
 const formBase =
-  "https://docs.google.com/forms/d/e/1FAIpQLSedn56DFoxM-TF0PJf06QG5aZoA-Fq0wEPfjdg_skdqCaUEzg/viewform?entry.385965829=";
+  "https://docs.google.com/forms/d/e/1FAIpQLSedn56DFoxM-TF0PJf06QG5aZoA-Fq0wEPfjdg_skdqCaUEzg/viewform?embedded=true&entry.385965829=";
 
+// === Elements ===
 const rsvpBtn = document.getElementById("rsvpBtn");
 const guestElement = document.getElementById("guest");
+const modal = document.getElementById("rsvpModal");
+const closeModal = document.getElementById("closeModal");
+const formFrame = document.getElementById("formFrame");
 
-// === Personal Greeting + Set RSVP Link ===
+// === Greeting + Set Form Source ===
 if (guestName) {
   guestElement.innerText = "Kepada Yth. " + guestName;
-  rsvpBtn.href = formBase + encodeURIComponent(guestName);
+  formFrame.src = formBase + encodeURIComponent(guestName);
 } else {
-  guestElement.innerText = "";
-  rsvpBtn.href =
-    "https://docs.google.com/forms/d/e/1FAIpQLSedn56DFoxM-TF0PJf06QG5aZoA-Fq0wEPfjdg_skdqCaUEzg/viewform";
+  formFrame.src =
+    "https://docs.google.com/forms/d/e/1FAIpQLSedn56DFoxM-TF0PJf06QG5aZoA-Fq0wEPfjdg_skdqCaUEzg/viewform?embedded=true";
 }
 
 // === Countdown ===
@@ -36,7 +39,7 @@ setInterval(() => {
   }
 }, 1000);
 
-// === Opening Screen + Music ===
+// === Opening + Music ===
 const openBtn = document.getElementById("openBtn");
 const opening = document.getElementById("opening");
 const bgMusic = document.getElementById("bgMusic");
@@ -49,20 +52,12 @@ openBtn.addEventListener("click", () => {
   }, 500);
 });
 
-// === Fade Transition Before Opening Form ===
-const overlay = document.createElement("div");
-overlay.classList.add("fade-overlay");
-document.body.appendChild(overlay);
+// === Open RSVP Modal ===
+rsvpBtn.addEventListener("click", () => {
+  modal.classList.add("active");
+});
 
-rsvpBtn.addEventListener("click", function (e) {
-  e.preventDefault();
-
-  overlay.classList.add("active");
-  rsvpBtn.innerText = "Membuka Form...";
-
-  setTimeout(() => {
-    window.open(rsvpBtn.href, "_blank");
-    overlay.classList.remove("active");
-    rsvpBtn.innerText = "Konfirmasi Kehadiran";
-  }, 500);
+// === Close RSVP Modal ===
+closeModal.addEventListener("click", () => {
+  modal.classList.remove("active");
 });

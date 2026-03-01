@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Khansa & Fikri</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -33,6 +34,14 @@
 <a id="rsvpBtn" class="rsvp-button">
   Konfirmasi Kehadiran
 </a>
+
+<!-- RSVP Modal -->
+<div id="rsvpModal" class="rsvp-modal">
+  <div class="rsvp-container">
+    <button id="closeModal" class="close-btn">✕</button>
+    <iframe id="formFrame"></iframe>
+  </div>
+</div>
 
 <!-- Background Music -->
 <audio id="bgMusic" loop>
