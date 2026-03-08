@@ -788,3 +788,63 @@ box-shadow:0 12px 32px rgba(192,57,43,.18);
 footer{
 padding:12px 20px 40px;
 }
+
+/* ===============================
+   GALLERY LIGHTBOX
+================================ */
+
+.lightbox{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.92);
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:9999;
+opacity:0;
+pointer-events:none;
+transition:opacity .3s;
+}
+
+.lightbox.active{
+opacity:1;
+pointer-events:auto;
+}
+
+.lightbox img{
+max-width:92%;
+max-height:92%;
+object-fit:contain;
+transition:transform .2s;
+touch-action:none;
+z-index:1;
+}
+
+.lightbox-close{
+position:absolute;
+top:24px;
+right:30px;
+font-size:30px;
+background:none;
+border:none;
+color:white;
+cursor:pointer;
+z-index:10;
+}
+
+.lightbox-prev,
+.lightbox-next{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+font-size:42px;
+background:none;
+border:none;
+color:white;
+cursor:pointer;
+padding:10px 20px;
+z-index:10;
+}
+
+.lightbox-prev{ left:20px }
+.lightbox-next{ right:20px }

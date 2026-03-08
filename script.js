@@ -332,9 +332,8 @@ track.appendChild(slide)
 console.error("Gallery load error",e)
 
 }
-
+setTimeout(initLightbox,300)
 }
-
 window.addEventListener("load",loadGallery)
 
 
@@ -361,3 +360,120 @@ btn.href=
 }
 
 window.addEventListener("load",initCalendar)
+
+/* ===============================
+   GALLERY LIGHTBOX
+================================ */
+
+/* ===============================
+   GALLERY LIGHTBOX
+================================ */
+
+let galleryImages=[]
+let currentIndex=0
+let startX=0
+let scale=1
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+const lightbox=document.getElementById("lightbox")
+const lightboxImg=document.getElementById("lightboxImg")
+const btnClose=document.getElementById("lightboxClose")
+const btnNext=document.getElementById("lightboxNext")
+const btnPrev=document.getElementById("lightboxPrev")
+
+btnClose.addEventListener("click",closeLightbox)
+btnNext.addEventListener("click",nextImage)
+btnPrev.addEventListener("click",prevImage)
+
+/* keyboard navigation */
+
+document.addEventListener("keydown",e=>{
+
+if(!lightbox.classList.contains("active")) return
+
+if(e.key==="ArrowRight") nextImage()
+if(e.key==="ArrowLeft") prevImage()
+if(e.key==="Escape") closeLightbox()
+
+})
+
+/* swipe support */
+
+lightbox.addEventListener("touchstart",e=>{
+startX=e.touches[0].clientX
+})
+
+lightbox.addEventListener("touchend",e=>{
+
+let endX=e.changedTouches[0].clientX
+
+if(startX-endX>50) nextImage()
+if(endX-startX>50) prevImage()
+
+})
+
+/* zoom */
+
+lightboxImg.addEventListener("wheel",e=>{
+
+e.preventDefault()
+
+scale+=e.deltaY*-0.001
+scale=Math.min(Math.max(.8,scale),4)
+
+lightboxImg.style.transform=`scale(${scale})`
+
+})
+
+})
+
+function initLightbox(){
+
+const slides=document.querySelectorAll(".photo-slide img")
+
+galleryImages=[...slides].map(img=>img.src)
+
+slides.forEach((img,i)=>{
+img.addEventListener("click",()=>openLightbox(i))
+})
+
+}
+
+function openLightbox(i){
+
+currentIndex=i
+
+const lightbox=document.getElementById("lightbox")
+const lightboxImg=document.getElementById("lightboxImg")
+
+lightboxImg.src=galleryImages[i]
+
+lightbox.classList.add("active")
+
+}
+
+function closeLightbox(){
+
+document.getElementById("lightbox")
+.classList.remove("active")
+
+}
+
+function nextImage(){
+
+currentIndex=(currentIndex+1)%galleryImages.length
+
+document.getElementById("lightboxImg").src=
+galleryImages[currentIndex]
+
+}
+
+function prevImage(){
+
+currentIndex=(currentIndex-1+galleryImages.length)%galleryImages.length
+
+document.getElementById("lightboxImg").src=
+galleryImages[currentIndex]
+
+}
