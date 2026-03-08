@@ -160,7 +160,7 @@ document.getElementById("openBtn").addEventListener("click", () => {
   const el = document.getElementById("opening");
   el.style.opacity   = "0";
   el.style.transform = "scale(1.06)";
-  setTimeout(() => { el.style.display = "none"; startPetals(); }, 1100);
+  setTimeout(() => { el.style.display = "none"; }, 1100);
 });
 
 /* ─────────────────────────────
@@ -304,3 +304,161 @@ window.addEventListener("load", () => {
   addCardCorners();
   addLanterns();
 });
+
+/* ─────────────────────────────
+   MUSIC PLAYER
+───────────────────────────── */
+function initMusicPlayer() {
+  const player = document.getElementById("musicPlayer");
+  const btn    = document.getElementById("musicBtn");
+  const bar    = document.getElementById("musicBar");
+  const audio  = document.getElementById("bgMusic");
+  if (!player || !btn || !audio) return;
+
+  // Show player after opening is closed
+  window._showMusicPlayer = () => {
+    player.classList.remove("hidden");
+  };
+
+  btn.addEventListener("click", () => {
+    if (audio.paused) {
+      audio.play().catch(() => {});
+      btn.textContent = "❚❚";
+      bar.classList.remove("paused");
+    } else {
+      audio.pause();
+      btn.textContent = "▶";
+      bar.classList.add("paused");
+    }
+  });
+
+  // Sync bar when audio ends/plays externally
+  audio.addEventListener("play",  () => { btn.textContent = "❚❚"; bar.classList.remove("paused"); });
+  audio.addEventListener("pause", () => { btn.textContent = "▶";  bar.classList.add("paused"); });
+}
+window.addEventListener("load", initMusicPlayer);
+
+/* ─────────────────────────────
+   SHOW MUSIC PLAYER AFTER OPENING
+───────────────────────────── */
+// Patch opening click to also show music player
+const _origOpenBtn = document.getElementById("openBtn");
+if (_origOpenBtn) {
+  _origOpenBtn.addEventListener("click", () => {
+    setTimeout(() => {
+      if (window._showMusicPlayer) window._showMusicPlayer();
+    }, 1200);
+  });
+}
+
+/* ─────────────────────────────
+   ADD TO CALENDAR
+───────────────────────────── */
+function initCalendar() {
+  const btn = document.getElementById("calendarBtn");
+  if (!btn) return;
+
+  // Google Calendar URL
+  const start  = "20260613T010000Z"; // 08:00 WIB = 01:00 UTC
+  const end    = "20260613T070000Z"; // ~14:00 WIB
+  const title  = encodeURIComponent("Pernikahan Khansa & Fikri");
+  const loc    = encodeURIComponent("Depok, Jawa Barat");
+  const detail = encodeURIComponent("Akad Nikah & Resepsi Pernikahan Khansa Ufahira & Muhammad Alwan Fikri");
+  const url    = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&details=${detail}&location=${loc}`;
+
+  btn.href = url;
+}
+window.addEventListener("load", initCalendar);
+
+/* ─────────────────────────────
+   CONFETTI BURST ON OPEN
+───────────────────────────── */
+function burstConfetti() {
+  const colors = ["#c0392b","#e2b86a","#f2c5bc","#c8943a","#8fa882","#d4523e","#fff9f4"];
+  const cx = window.innerWidth / 2;
+  const cy = window.innerHeight / 2;
+  const count = 80;
+
+  for (let i = 0; i < count; i++) {
+    const el = document.createElement("div");
+    el.className = "confetti-piece";
+
+    const angle  = (Math.random() * 360) * Math.PI / 180;
+    const dist   = Math.random() * 300 + 100;
+    const tx     = Math.round(Math.cos(angle) * dist);
+    const ty     = Math.round(Math.sin(angle) * dist - 150); // bias upward
+    const rot    = Math.round(Math.random() * 720 - 360);
+    const size   = Math.round(Math.random() * 10 + 5);
+    const delay  = Math.random() * 0.3;
+
+    el.style.cssText = `
+      left:${cx}px; top:${cy}px;
+      width:${size}px; height:${size * (Math.random() > .5 ? 1 : 0.4)}px;
+      background:${colors[Math.floor(Math.random() * colors.length)]};
+      border-radius:${Math.random() > .5 ? "50%" : "2px"};
+      --tx:${tx}px; --ty:${ty}px; --rot:${rot}deg;
+      animation-delay:${delay}s;
+      animation-duration:${(Math.random() * 0.6 + 1).toFixed(2)}s;
+    `;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 2000);
+  }
+}
+
+/* ─────────────────────────────
+   PARALLAX FOR pic2 HEADER
+───────────────────────────── */
+function initParallax() {
+  const img = document.querySelector(".top-illustration");
+  if (!img) return;
+  window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+    const imgBottom = img.offsetTop + img.offsetHeight;
+    if (scrollY < imgBottom) {
+      img.style.transform = `translateY(${scrollY * 0.3}px)`;
+    }
+  }, { passive: true });
+}
+window.addEventListener("load", initParallax);
+
+/* ─────────────────────────────
+   FLIP CARD COUNTDOWN ANIMATION
+───────────────────────────── */
+// Override tick() to animate digit changes
+(function() {
+  const ids = ["days","hours","minutes","seconds"];
+  const prev = { days:"", hours:"", minutes:"", seconds:"" };
+
+  function animateTick() {
+    const d = target - Date.now();
+    if (d <= 0) return;
+    const vals = {
+      days:    pad(Math.floor(d / 86400000)),
+      hours:   pad(Math.floor(d / 3600000) % 24),
+      minutes: pad(Math.floor(d / 60000) % 60),
+      seconds: pad(Math.floor(d / 1000) % 60),
+    };
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      if (vals[id] !== prev[id]) {
+        el.style.animation = "none";
+        el.textContent = vals[id];
+        // force reflow then re-apply animation
+        void el.offsetWidth;
+        el.style.animation = "";
+        prev[id] = vals[id];
+      }
+    });
+  }
+
+  // Replace the existing interval
+  clearInterval(window._tickInterval);
+  window._tickInterval = setInterval(animateTick, 1000);
+  animateTick();
+})();
+
+/* ─────────────────────────────
+   PATCH OPENING BUTTON FOR CONFETTI
+───────────────────────────── */
+document.getElementById("openBtn").addEventListener("click", burstConfetti);

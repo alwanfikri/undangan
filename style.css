@@ -34,18 +34,8 @@ body {
 /* =====================
    FLOATING PETALS
 ===================== */
-#petalsContainer {
-  position: fixed; inset: 0;
-  pointer-events: none; z-index: 8000; overflow: hidden;
-}
-.petal { position:absolute; top:-60px; opacity:0; animation:petalFall linear infinite; }
-@keyframes petalFall {
-  0%   { transform:translateY(0) rotate(0deg) translateX(0); opacity:0; }
-  10%  { opacity:.8; }
-  50%  { transform:translateY(50vh) rotate(200deg) translateX(28px); }
-  90%  { opacity:.55; }
-  100% { transform:translateY(108vh) rotate(420deg) translateX(-20px); opacity:0; }
-}
+#petalsContainer { display: none; }
+.petal { display: none; }
 
 /* =====================
    OPENING SCREEN
@@ -70,7 +60,7 @@ body {
 .opening-content {
   position: absolute;
   z-index: 2;
-  top: 28%;
+  top: 26%;
   left: 50%;
   transform: translateX(-50%);
   width: 62%;
@@ -88,6 +78,10 @@ body {
 .opening-label {
   font-size:.62rem; letter-spacing:4px; text-transform:uppercase;
   color:var(--red); margin-bottom:2px;
+  background: rgba(192,57,43,0.08);
+  backdrop-filter: blur(4px);
+  border-radius: 2px;
+  padding: 4px 12px;
 }
 .opening-names {
   font-family:'Playfair Display',serif; font-size:2.2rem;
@@ -479,4 +473,175 @@ footer span { color:var(--red); }
 }
 @media(min-width:601px){
 
+}
+
+
+/* =====================
+   MUSIC PLAYER
+===================== */
+.music-player {
+  position: fixed;
+  bottom: 24px;
+  right: 20px;
+  z-index: 7000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--warm-white);
+  border: 1px solid var(--red-pale);
+  border-radius: 40px;
+  padding: 8px 16px 8px 8px;
+  box-shadow: 0 4px 20px var(--shadow);
+  transition: opacity .3s;
+}
+.music-player.hidden { opacity: 0; pointer-events: none; }
+
+.music-play-btn {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--red);
+  border: none;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: white;
+  font-size: 14px;
+  flex-shrink: 0;
+  transition: background .2s, transform .2s;
+}
+.music-play-btn:hover { background: var(--brown-dark); transform: scale(1.08); }
+
+.music-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+}
+.music-title {
+  font-size: .72rem;
+  letter-spacing: 1px;
+  color: var(--brown-dark);
+  font-family: 'Cormorant Garamond', serif;
+  white-space: nowrap;
+}
+.music-bar {
+  display: flex;
+  gap: 2px;
+  align-items: flex-end;
+  height: 14px;
+  margin-top: 2px;
+}
+.music-bar span {
+  width: 3px;
+  background: var(--red);
+  border-radius: 2px;
+  animation: musicWave .8s ease-in-out infinite alternate;
+}
+.music-bar span:nth-child(1) { height: 6px;  animation-delay: 0s; }
+.music-bar span:nth-child(2) { height: 12px; animation-delay: .15s; }
+.music-bar span:nth-child(3) { height: 8px;  animation-delay: .3s; }
+.music-bar span:nth-child(4) { height: 14px; animation-delay: .1s; }
+.music-bar span:nth-child(5) { height: 5px;  animation-delay: .25s; }
+.music-bar.paused span { animation-play-state: paused; opacity: .3; }
+
+@keyframes musicWave {
+  from { transform: scaleY(.4); }
+  to   { transform: scaleY(1); }
+}
+
+/* =====================
+   ADD TO CALENDAR BUTTON
+===================== */
+.calendar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 10px 24px;
+  background: transparent;
+  border: 1.5px solid var(--red);
+  color: var(--red);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .82rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .3s;
+  text-decoration: none;
+}
+.calendar-btn:hover { background: var(--red); color: white; }
+.calendar-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* =====================
+   FLIP CARD COUNTDOWN
+===================== */
+.flip-box {
+  perspective: 400px;
+}
+.flip-box span {
+  display: block;
+  position: relative;
+  animation: flipPulse .4s ease both;
+}
+@keyframes flipPulse {
+  0%   { transform: rotateX(90deg); opacity: 0; }
+  100% { transform: rotateX(0deg);  opacity: 1; }
+}
+/* line across middle of flip box */
+.flip-box::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  top: 50%;
+  height: 1px;
+  background: rgba(0,0,0,.15);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* =====================
+   PARALLAX HEADER
+===================== */
+.top-illustration {
+  will-change: transform;
+  transition: transform .1s linear;
+}
+
+/* =====================
+   CONFETTI BURST
+===================== */
+.confetti-piece {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 9997;
+  animation: confettiBurst 1.4s ease-out both;
+}
+@keyframes confettiBurst {
+  0%   { transform: translate(0,0) rotate(0deg) scale(1); opacity: 1; }
+  100% { transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(.4); opacity: 0; }
+}
+
+
+/* =====================
+   BISMILLAH LATIN
+===================== */
+.bismillah-latin {
+  font-family: 'Amiri', serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: var(--brown-dark);
+  letter-spacing: 2px;
+  margin: 6px 0;
+  line-height: 1.6;
+}
+
+/* =====================
+   OPEN BTN BACKGROUND
+===================== */
+.open-btn {
+  background: rgba(192,57,43,0.08) !important;
+  backdrop-filter: blur(4px);
+  border-radius: 2px;
 }
