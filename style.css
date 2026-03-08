@@ -848,3 +848,16 @@ z-index:10;
 
 .lightbox-prev{ left:20px }
 .lightbox-next{ right:20px }
+
+/* ===============================
+   MOBILE OPENING POSITION FIX
+================================ */
+
+@media (max-width:768px){
+
+.opening-content{
+top:34% !important;
+transform:translate(-50%,-24%) !important;
+}
+
+}
