@@ -425,10 +425,10 @@ body {
   display: block;
   margin: 0 auto;
   opacity: 1;
-  filter: drop-shadow(0 4px 12px var(--shadow));
-  max-height: 220px;
-  object-fit: cover;
-  object-position: center;
+  /* tampilkan gambar penuh tanpa crop */
+  max-height: none;
+  height: auto;
+  object-fit: unset;
 }
 .bottom-illustration {
   width:110px; display:block; margin:28px auto 0;
