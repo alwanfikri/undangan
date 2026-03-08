@@ -23,13 +23,34 @@
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior: smooth; }
 body {
-  background: var(--page-bg);
+  background-color: var(--page-bg);
+  background-image: url('batik-pattern.png');
+  background-repeat: repeat;
+  background-size: 420px;
+  background-attachment: fixed;
   font-family: 'Cormorant Garamond', serif;
   color: var(--brown);
   text-align: center;
   line-height: 1.9;
   overflow-x: hidden;
 }
+
+/* batik overlay — controls opacity without affecting content */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url('batik-pattern.png');
+  background-repeat: repeat;
+  background-size: 420px;
+  background-attachment: fixed;
+  opacity: 0.01;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ensure all sections sit above the batik overlay */
+body > * { position: relative; z-index: 1; }
 
 /* =====================
    FLOATING PETALS

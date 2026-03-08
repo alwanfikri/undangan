@@ -1,5 +1,5 @@
 /* ===============================
-   CONFIG
+CONFIG
 ================================ */
 
 const scriptURL =
@@ -7,87 +7,161 @@ const scriptURL =
 
 
 /* ===============================
-   LANGUAGE SYSTEM
+LANGUAGE SYSTEM
 ================================ */
 
-const i18n={
+const i18n = {
 
-id:{
-"to":"Kepada Yth.",
-"open":"✦ Buka Undangan ✦",
-"getting-married":"Kami Akan Menikah",
-"days":"Hari",
-"hours":"Jam",
-"minutes":"Menit",
-"seconds":"Detik",
-"event-title":"Rangkaian Acara",
-"location-title":"Lokasi",
-"rsvp-title":"RSVP",
-"gift-title":"Hadiah Pernikahan",
-"gallery-title":"Galeri",
-"form-name":"Nama Lengkap",
-"form-category":"Kategori",
-"form-attend":"Kesediaan Hadir",
-"form-wishes":"Doa & Ucapan",
-"save-calendar":"Simpan ke Kalender",
-"rsvp-sending":"Mengirim...",
-"rsvp-success":"Terima kasih atas doa dan kehadirannya 🤍",
-"rsvp-error":"Terjadi kesalahan. Mohon coba lagi."
-},
+  id: {
+    /* opening */
+    "to":                   "Kepada Yth.",
+    "open":                 "✦ Buka Undangan ✦",
+    /* bismillah */
+    "verse":                `"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan dari jenismu sendiri agar kamu merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."<br><em>(QS. Ar-Rum: 21)</em>`,
+    "daughter":             "Putri dari Bapak Didik Noorcahyono & Ibu Tentrem Hartati",
+    "son":                  "Putra dari Bapak Alm. Farid Anshori & Ibu Siti Wahyuni",
+    /* countdown */
+    "getting-married":      "Kami Akan Menikah",
+    "days":                 "Hari",
+    "hours":                "Jam",
+    "minutes":              "Menit",
+    "seconds":              "Detik",
+    /* event */
+    "event-title":          "Rangkaian Acara",
+    "event-name":           "Akad Nikah & Resepsi",
+    "event-date":           "Sabtu, 13 Juni 2026",
+    "event-time":           "08.00 WIB — Selesai",
+    "save-calendar":        "Simpan ke Kalender",
+    /* lokasi */
+    "location-title":       "Lokasi",
+    /* rsvp */
+    "rsvp-title":           "RSVP",
+    "form-name":            "Nama Lengkap",
+    "placeholder-name":     "Masukkan nama Anda",
+    "form-category":        "Kategori",
+    "placeholder-category": "Pilih kategori",
+    "cat-family":           "Keluarga",
+    "cat-colleague":        "Rekan Kerja",
+    "cat-friend":           "Teman",
+    "form-attend":          "Kesediaan Hadir",
+    "placeholder-attend":   "Konfirmasi kehadiran",
+    "attend-yes":           "Hadir",
+    "attend-no":            "Berhalangan",
+    "form-wishes":          "Doa & Ucapan",
+    "placeholder-wishes":   "Tuliskan doa dan ucapan tulus Anda...",
+    "submit":               "Kirim",
+    "wishes-title":         "Doa & Ucapan",
+    /* gift */
+    "gift-title":           "Hadiah Pernikahan",
+    "gift-intro":           "Tanpa mengurangi rasa hormat, bagi tamu yang ingin memberikan hadiah kepada kami, dapat melalui nomor rekening berikut.",
+    "copy":                 "Salin",
+    "copied":               "✓ Tersalin",
+    /* gallery */
+    "gallery-title":        "Galeri",
+    /* footer */
+    "footer-love":          "With love,",
+    /* messages */
+    "rsvp-sending":         "Mengirim...",
+    "rsvp-success":         "Terima kasih atas doa dan kehadirannya 🤍",
+    "rsvp-error":           "Terjadi kesalahan. Mohon coba lagi.",
+    "ucapan-empty":         "Jadilah yang pertama memberikan ucapan 🤍",
+  },
 
-en:{
-"to":"Dear",
-"open":"✦ Open Invitation ✦",
-"getting-married":"We Are Getting Married",
-"days":"Days",
-"hours":"Hours",
-"minutes":"Minutes",
-"seconds":"Seconds",
-"event-title":"Event Schedule",
-"location-title":"Location",
-"rsvp-title":"RSVP",
-"gift-title":"Wedding Gift",
-"gallery-title":"Gallery",
-"form-name":"Full Name",
-"form-category":"Category",
-"form-attend":"Attendance",
-"form-wishes":"Prayer & Wishes",
-"save-calendar":"Save to Calendar",
-"rsvp-sending":"Sending...",
-"rsvp-success":"Thank you for your prayers 🤍",
-"rsvp-error":"Error occurred"
+  en: {
+    /* opening */
+    "to":                   "Dear,",
+    "open":                 "✦ Open Invitation ✦",
+    /* bismillah */
+    "verse":                `"And of His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy."<br><em>(QS. Ar-Rum: 21)</em>`,
+    "daughter":             "Daughter of Mr. Didik Noorcahyono & Mrs. Tentrem Hartati",
+    "son":                  "Son of the late Mr. Farid Anshori & Mrs. Siti Wahyuni",
+    /* countdown */
+    "getting-married":      "We Are Getting Married",
+    "days":                 "Days",
+    "hours":                "Hours",
+    "minutes":              "Mins",
+    "seconds":              "Secs",
+    /* event */
+    "event-title":          "Event Schedule",
+    "event-name":           "Akad Nikah & Reception",
+    "event-date":           "Saturday, June 13, 2026",
+    "event-time":           "08.00 WIB — Until Finished",
+    "save-calendar":        "Save to Calendar",
+    /* lokasi */
+    "location-title":       "Location",
+    /* rsvp */
+    "rsvp-title":           "RSVP",
+    "form-name":            "Full Name",
+    "placeholder-name":     "Enter your name",
+    "form-category":        "Category",
+    "placeholder-category": "Select category",
+    "cat-family":           "Family",
+    "cat-colleague":        "Colleague",
+    "cat-friend":           "Friend",
+    "form-attend":          "Attendance",
+    "placeholder-attend":   "Confirm attendance",
+    "attend-yes":           "Attending",
+    "attend-no":            "Unable to Attend",
+    "form-wishes":          "Prayer & Wishes",
+    "placeholder-wishes":   "Share your heartfelt prayers and wishes...",
+    "submit":               "Send",
+    "wishes-title":         "Prayers & Wishes",
+    /* gift */
+    "gift-title":           "Wedding Gift",
+    "gift-intro":           "Without diminishing our respect, for guests who wish to give a gift, you may transfer to the following bank accounts.",
+    "copy":                 "Copy",
+    "copied":               "✓ Copied",
+    /* gallery */
+    "gallery-title":        "Gallery",
+    /* footer */
+    "footer-love":          "With love,",
+    /* messages */
+    "rsvp-sending":         "Sending...",
+    "rsvp-success":         "Thank you for your prayers and attendance 🤍",
+    "rsvp-error":           "An error occurred. Please try again.",
+    "ucapan-empty":         "Be the first to share your wishes 🤍",
+  }
+
 }
 
+let currentLang = "id"
+
+function applyLang(lang) {
+  currentLang = lang
+  const t = i18n[lang]
+
+  // innerHTML elements
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n")
+    if (t[key] !== undefined) el.innerHTML = t[key]
+  })
+
+  // placeholder elements
+  document.querySelectorAll("[data-i18n-ph]").forEach(el => {
+    const key = el.getAttribute("data-i18n-ph")
+    if (t[key] !== undefined) el.placeholder = t[key]
+  })
+
+  // active button state
+  document.querySelectorAll(".lang-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.lang === lang)
+  })
+
+  document.documentElement.lang = lang
 }
 
-let currentLang="id"
-
-function applyLang(lang){
-
-currentLang=lang
-
-const t=i18n[lang]
-
-document.querySelectorAll("[data-i18n]").forEach(el=>{
-const key=el.getAttribute("data-i18n")
-if(t[key]) el.innerHTML=t[key]
-})
-
-document.querySelectorAll(".lang-btn").forEach(btn=>{
-btn.classList.toggle("active",btn.dataset.lang===lang)
-})
-
-}
-
-document.querySelectorAll(".lang-btn").forEach(btn=>{
-btn.onclick=()=>applyLang(btn.dataset.lang)
+document.querySelectorAll(".lang-btn").forEach(btn => {
+  btn.onclick = () => applyLang(btn.dataset.lang)
 })
 
 applyLang("id")
 
 
+
+
+
 /* ===============================
-   GUEST AUTO DETECTION
+GUEST AUTO DETECTION
 ================================ */
 
 const params=new URLSearchParams(window.location.search)
@@ -103,7 +177,7 @@ document.getElementById("nama").value=guestName
 
 
 /* ===============================
-   COUNTDOWN
+COUNTDOWN
 ================================ */
 
 const targetDate=new Date("June 13, 2026 08:00:00").getTime()
@@ -139,7 +213,7 @@ setInterval(countdown,1000)
 
 
 /* ===============================
-   OPEN INVITATION
+OPEN INVITATION
 ================================ */
 
 document.getElementById("openBtn").onclick=()=>{
@@ -161,26 +235,33 @@ el.style.display="none"
 
 
 /* ===============================
-   COPY BANK ACCOUNT
+COPY BANK ACCOUNT
 ================================ */
 
-function copyAccount(btn,number){
-
-navigator.clipboard.writeText(number)
-
-btn.classList.add("copied")
-
-setTimeout(()=>{
-btn.classList.remove("copied")
-},2000)
-
+function copyAccount(btn, number) {
+  const orig = btn.innerText
+  navigator.clipboard.writeText(number).catch(() => {
+    // fallback
+    const ta = document.createElement("textarea")
+    ta.value = number
+    document.body.appendChild(ta)
+    ta.select()
+    document.execCommand("copy")
+    ta.remove()
+  })
+  btn.innerText = i18n[currentLang]["copied"]
+  btn.classList.add("copied")
+  setTimeout(() => {
+    btn.innerText = i18n[currentLang]["copy"]
+    btn.classList.remove("copied")
+  }, 2200)
 }
 
 window.copyAccount=copyAccount
 
 
 /* ===============================
-   RSVP SUBMIT
+RSVP SUBMIT
 ================================ */
 
 document.getElementById("rsvpForm").addEventListener("submit",async e=>{
@@ -227,7 +308,7 @@ msg.innerText=i18n[currentLang]["rsvp-error"]
 
 
 /* ===============================
-   MESSAGE BOARD
+MESSAGE BOARD
 ================================ */
 
 async function loadUcapan(){
@@ -242,18 +323,21 @@ const box=document.getElementById("ucapanList")
 
 box.innerHTML=""
 
-data.reverse().slice(0,50).forEach(item=>{
+const items = data.reverse().slice(0,50).filter(i => i.Nama && i.Ucapan)
+if (!items.length) {
+  box.innerHTML = `<p style="text-align:center;font-style:italic;font-size:.9rem;color:#9a7050;padding:16px 0;">${i18n[currentLang]["ucapan-empty"]}</p>`
+  return
+}
+items.forEach(item=>{
 
 const div=document.createElement("div")
 
 div.className="ucapan-item"
 
 div.innerHTML=`
-
 <strong>${item.Nama}${item.Kategori?" · "+item.Kategori:""}</strong>
 <p>${item.Ucapan}</p>
 <span class="badge ${item.Kehadiran==="Hadir"?"hadir":"tidak"}">${item.Kehadiran}</span>
-
 `
 
 box.appendChild(div)
@@ -272,7 +356,7 @@ window.addEventListener("load",loadUcapan)
 
 
 /* ===============================
-   SCROLL REVEAL
+SCROLL REVEAL
 ================================ */
 
 function reveal(){
@@ -294,7 +378,7 @@ window.addEventListener("load",reveal)
 
 
 /* ===============================
-   GALLERY FROM GOOGLE DRIVE
+GALLERY FROM GOOGLE DRIVE
 ================================ */
 
 async function loadGallery(){
@@ -332,13 +416,16 @@ track.appendChild(slide)
 console.error("Gallery load error",e)
 
 }
+
 setTimeout(initLightbox,300)
+
 }
+
 window.addEventListener("load",loadGallery)
 
 
 /* ===============================
-   ADD TO CALENDAR
+ADD TO CALENDAR
 ================================ */
 
 function initCalendar(){
@@ -351,7 +438,6 @@ const start="20260613T010000Z"
 const end="20260613T070000Z"
 
 const title=encodeURIComponent("Pernikahan Khansa & Fikri")
-
 const loc=encodeURIComponent("Depok, Jawa Barat")
 
 btn.href=
@@ -361,12 +447,9 @@ btn.href=
 
 window.addEventListener("load",initCalendar)
 
-/* ===============================
-   GALLERY LIGHTBOX
-================================ */
 
 /* ===============================
-   GALLERY LIGHTBOX
+GALLERY LIGHTBOX
 ================================ */
 
 let galleryImages=[]
@@ -386,8 +469,6 @@ btnClose.addEventListener("click",closeLightbox)
 btnNext.addEventListener("click",nextImage)
 btnPrev.addEventListener("click",prevImage)
 
-/* keyboard navigation */
-
 document.addEventListener("keydown",e=>{
 
 if(!lightbox.classList.contains("active")) return
@@ -397,8 +478,6 @@ if(e.key==="ArrowLeft") prevImage()
 if(e.key==="Escape") closeLightbox()
 
 })
-
-/* swipe support */
 
 lightbox.addEventListener("touchstart",e=>{
 startX=e.touches[0].clientX
@@ -412,8 +491,6 @@ if(startX-endX>50) nextImage()
 if(endX-startX>50) prevImage()
 
 })
-
-/* zoom */
 
 lightboxImg.addEventListener("wheel",e=>{
 
@@ -455,25 +532,20 @@ lightbox.classList.add("active")
 
 function closeLightbox(){
 
-document.getElementById("lightbox")
-.classList.remove("active")
+document.getElementById("lightbox").classList.remove("active")
 
 }
 
 function nextImage(){
 
 currentIndex=(currentIndex+1)%galleryImages.length
-
-document.getElementById("lightboxImg").src=
-galleryImages[currentIndex]
+document.getElementById("lightboxImg").src=galleryImages[currentIndex]
 
 }
 
 function prevImage(){
 
 currentIndex=(currentIndex-1+galleryImages.length)%galleryImages.length
-
-document.getElementById("lightboxImg").src=
-galleryImages[currentIndex]
+document.getElementById("lightboxImg").src=galleryImages[currentIndex]
 
 }
