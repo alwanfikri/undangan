@@ -682,3 +682,109 @@ footer span { color:var(--red); }
 }
 .lang-btn:hover:not(.active) { color: var(--red-mid); }
 .lang-sep { color: var(--red-pale); font-size: .7rem; }
+
+/* =====================
+   SUBTLE BATIK BACKGROUND
+===================== */
+
+body::before{
+content:'';
+position:fixed;
+inset:0;
+background-image:url('batik-pattern.png');
+background-size:420px;
+opacity:.035;
+pointer-events:none;
+z-index:-1;
+}
+
+
+/* OPENING POSITION FIX */
+
+.opening-content{
+top:32%;
+}
+
+
+/* TOP ORNAMENT SIZE */
+
+.top-illustration{
+width:92%;
+max-width:900px;
+margin:0 auto;
+display:block;
+}
+
+
+/* HERO SPACING */
+
+.hero{
+padding:0 20px 10px;
+}
+
+.hero-sub{
+margin-bottom:18px;
+}
+
+
+/* NAME FRAME ORNAMENT */
+
+.name-frame::after{
+content:'✦';
+position:absolute;
+top:-12px;
+left:50%;
+transform:translateX(-50%);
+background:var(--warm-white);
+padding:0 8px;
+color:var(--gold);
+font-size:14px;
+}
+
+
+/* RSVP LAYOUT */
+
+.rsvp-form{
+max-width:420px;
+margin:auto;
+}
+
+.form-group label{
+margin-bottom:8px;
+}
+
+
+/* MESSAGE BOARD INTERACTION */
+
+.ucapan-item:hover{
+background:rgba(192,57,43,.04);
+padding-left:6px;
+transition:all .2s;
+}
+
+
+/* GALLERY FRAME */
+
+.photo-slide{
+padding:6px;
+background:var(--warm-white);
+}
+
+.photo-slide img{
+border-radius:2px;
+}
+
+
+/* GIFT HOVER */
+
+.gift-card:hover{
+transform:translateY(-4px);
+box-shadow:0 12px 32px rgba(192,57,43,.18);
+}
+
+
+/* FOOTER SPACING */
+
+footer{
+padding:12px 20px 40px;
+}
