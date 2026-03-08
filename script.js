@@ -11,10 +11,10 @@ id:{
 
 "verse":`"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan dari jenismu sendiri agar kamu merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."<br><em>(QS. Ar-Rum:21)</em>`,
 
-"daughter":"Putri dari Bapak & Ibu",
-"son":"Putra dari Bapak & Ibu",
+"daughter":"Putri dari Bapak Didik Noorcahyono & Ibu Tentrem Hartati",
+"son":"Putra dari Bapak Alm. Farid Anshori & Ibu Siti Wahyuni",
 
-"getting-married":"We Are Getting Married",
+"getting-married":"Kami Akan Menikah",
 
 "days":"Hari",
 "hours":"Jam",
@@ -35,7 +35,7 @@ id:{
 "form-attend":"Kesediaan Hadir",
 "form-wishes":"Doa & Ucapan",
 
-"gift-title":"Wedding Gift",
+"gift-title":"Hadiah Pernikahan",
 
 "gallery-title":"Galeri",
 
@@ -59,8 +59,8 @@ en:{
 
 "verse":`"And of His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy."<br><em>(QS. Ar-Rum:21)</em>`,
 
-"daughter":"Daughter of Mr. & Mrs.",
-"son":"Son of Mr. & Mrs.",
+"daughter":"Daughter of Mr. Didik Noorcahyono & Mrs. Tentrem Hartati",
+"son":"Son of Mr. Alm. Farid Anshori & Mrs. Siti Wahyuni",
 
 "getting-married":"We Are Getting Married",
 
@@ -70,7 +70,7 @@ en:{
 "seconds":"Seconds",
 
 "event-title":"Event Schedule",
-"event-name":"Marriage Ceremony & Reception",
+"event-name":"Akad & Reception",
 "event-date":"Saturday, June 13 2026",
 "event-time":"08.00 WIB — Finished",
 
