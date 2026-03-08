@@ -1,166 +1,250 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Khansa & Fikri</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Khansa & Fikri — 13 Juni 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- OPENING -->
+<!-- ═══════════════════════════════════
+     FLOATING PETALS
+═══════════════════════════════════ -->
+<div id="petalsContainer"></div>
+
+<!-- ═══════════════════════════════════
+     OPENING — uses pic1.png as frame background
+═══════════════════════════════════ -->
 <div id="opening" class="opening">
+  <div class="opening-frame"></div>
   <div class="opening-content">
-    <h2 class="opening-bride">Khansa & Fikri</h2>
-    <p>Kepada Yth.</p>
-    <h3 id="openingGuest"></h3>
-    <img src="pic1.png" class="opening-image">
-    <button id="openBtn">Buka Undangan</button>
+    <p class="opening-label">Undangan Pernikahan</p>
+    <div class="opening-names">Khansa<br>&amp; Fikri</div>
+    <p class="opening-to">Kepada Yth.</p>
+    <h3 class="opening-guest" id="openingGuest"></h3>
+    <div class="opening-divider"></div>
+    <button class="open-btn" id="openBtn">✦ Buka Undangan ✦</button>
   </div>
 </div>
 
-<!-- BISMI SECTION -->
+<!-- ═══════════════════════════════════
+     TOP ORNAMENT (pic2)
+═══════════════════════════════════ -->
+<img src="pic2.png" class="top-illustration" alt="ornamen atas">
+
+<!-- ═══════════════════════════════════
+     BISMILLAH
+═══════════════════════════════════ -->
 <section class="bismillah-section reveal">
+  <div class="javanese-card bismillah-inner">
+    <!-- SVG corner flowers injected by JS -->
 
-<img src="pic1.png" class="bismillah-image">
 
-<div class="divider"></div>
+    <div class="ornaline">✦</div>
 
-<p class="bismillah arabic">
-بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
-</p>
+    <p class="arabic bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
 
-<div class="divider"></div>
+    <div class="ornaline">✦</div>
 
-<p class="translation">
-“Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan dari jenismu sendiri agar kamu merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang.”
-<br>(QS. Ar-Rum: 21)
-</p>
+    <p class="translation">
+      "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu
+      pasangan dari jenismu sendiri agar kamu merasa tenteram kepadanya,
+      dan Dia menjadikan di antaramu rasa kasih dan sayang."
+      <br><em>(QS. Ar-Rum: 21)</em>
+    </p>
 
-<div class="divider"></div>
+    <div class="ornaline">✦</div>
 
-<div class="name-frame">
-  <h2 class="bride">Khansa Ufahira</h2>
-  <div class="ampersand">&</div>
-  <h2 class="groom">Muhammad Alwan Fikri</h2>
-</div>
+    <div class="name-frame">
+      <h2 class="bride-name">Khansa Ufahira</h2>
+      <p class="name-sub">Putri dari Bapak &amp; Ibu</p>
+      <div class="ampersand">&amp;</div>
+      <h2 class="groom-name">Muhammad Alwan Fikri</h2>
+      <p class="name-sub">Putra dari Bapak &amp; Ibu</p>
+    </div>
 
+  </div>
 </section>
 
-<!-- COUNTDOWN -->
+<!-- ═══════════════════════════════════
+     COUNTDOWN
+═══════════════════════════════════ -->
 <section class="hero reveal">
-<p class="hero-sub">We are getting married</p>
+  <!-- Decorative lanterns above countdown -->
+  <div class="lantern-row" aria-hidden="true" id="lanternRow"></div>
 
-<div class="flip-countdown">
-  <div class="flip-box"><span id="days">00</span><small>Days</small></div>
-  <div class="flip-box"><span id="hours">00</span><small>Hours</small></div>
-  <div class="flip-box"><span id="minutes">00</span><small>Minutes</small></div>
-  <div class="flip-box"><span id="seconds">00</span><small>Seconds</small></div>
-</div>
+  <p class="hero-sub" style="margin-top:20px;">We Are Getting Married</p>
+
+  <div class="flip-countdown">
+    <div class="flip-box"><span id="days">00</span><small>Hari</small></div>
+    <div class="flip-box"><span id="hours">00</span><small>Jam</small></div>
+    <div class="flip-box"><span id="minutes">00</span><small>Menit</small></div>
+    <div class="flip-box"><span id="seconds">00</span><small>Detik</small></div>
+  </div>
 </section>
 
-<h2 class="section-title reveal">Event Details</h2>
+<!-- ═══════════════════════════════════
+     EVENT DETAILS
+═══════════════════════════════════ -->
+<h2 class="section-title reveal"><span class="title-gem">✿</span> Rangkaian Acara <span class="title-gem">✿</span></h2>
 
 <section class="details reveal">
-  <div class="detail-card">
-    <p>Sabtu, 13 Juni 2026</p>
-    <p>Depok, Jawa Barat</p>
+  <div class="javanese-card detail-card">
+    <p class="detail-event-name">Akad Nikah &amp; Resepsi</p>
+    <div class="ornaline">✦</div>
+    <p class="detail-date">Sabtu, 13 Juni 2026</p>
+    <p class="detail-time">08.00 WIB — Selesai</p>
+    <div class="ornaline" style="margin:16px 0;">✦</div>
+    <p class="detail-location">Depok, Jawa Barat</p>
   </div>
 </section>
 
-<h2 class="section-title reveal">Lokasi</h2>
+<!-- ═══════════════════════════════════
+     LOKASI
+═══════════════════════════════════ -->
+<h2 class="section-title reveal"><span class="title-gem">✿</span> Lokasi <span class="title-gem">✿</span></h2>
 
 <section class="map-section reveal">
-  <iframe
-  src="https://maps.google.com/maps?q=-6.376053268106767,106.85938933615078&z=15&output=embed"
-  loading="lazy">
-  </iframe>
+  <div class="map-wrap">
+    <iframe
+      src="https://maps.google.com/maps?q=-6.376053268106767,106.85938933615078&z=15&output=embed"
+      loading="lazy" title="Lokasi Pernikahan">
+    </iframe>
+  </div>
 </section>
 
-<h2 class="section-title reveal">RSVP</h2>
+<!-- ═══════════════════════════════════
+     RSVP
+═══════════════════════════════════ -->
+<h2 class="section-title reveal"><span class="title-gem">✿</span> RSVP <span class="title-gem">✿</span></h2>
 
 <section class="rsvp-section reveal">
+  <div class="javanese-card rsvp-inner">
 
-<form id="rsvpForm">
+    <form id="rsvpForm" class="rsvp-form">
 
-<input type="text" id="nama" placeholder="Nama Lengkap" required>
+      <div class="form-group">
+        <label>Nama Lengkap</label>
+        <input type="text" id="nama" placeholder="Masukkan nama Anda" required>
+      </div>
 
-<select id="kategori" required>
-<option value="">Kategori</option>
-<option value="Keluarga">Keluarga</option>
-<option value="Sahabat">Sahabat</option>
-<option value="Rekan Kerja">Rekan Kerja</option>
-<option value="Teman">Teman</option>
-</select>
+      <div class="form-group">
+        <label>Kategori</label>
+        <select id="kategori" required>
+          <option value="">Pilih kategori</option>
+          <option value="Keluarga">Keluarga</option>
+          <option value="Sahabat">Sahabat</option>
+          <option value="Rekan Kerja">Rekan Kerja</option>
+          <option value="Teman">Teman</option>
+        </select>
+      </div>
 
-<select id="kehadiran" required>
-<option value="">Kesediaan Hadir</option>
-<option value="Hadir">Hadir</option>
-<option value="Berhalangan">Berhalangan</option>
-</select>
+      <div class="form-group">
+        <label>Kesediaan Hadir</label>
+        <select id="kehadiran" required>
+          <option value="">Konfirmasi kehadiran</option>
+          <option value="Hadir">Hadir</option>
+          <option value="Berhalangan">Berhalangan</option>
+        </select>
+      </div>
 
-<textarea id="ucapan" placeholder="Doa dan Ucapan"></textarea>
+      <div class="form-group">
+        <label>Doa &amp; Ucapan</label>
+        <textarea id="ucapan" placeholder="Tuliskan doa dan ucapan tulus Anda..."></textarea>
+      </div>
 
-<button type="submit">Kirim</button>
+      <button type="submit" class="submit-btn">Kirim</button>
+    </form>
 
-</form>
+    <p id="formMessage"></p>
 
-<p id="formMessage"></p>
+    <div class="ucapan-box">
+      <h3>✦ Doa &amp; Ucapan ✦</h3>
+      <div id="ucapanList"></div>
+    </div>
 
-<div class="ucapan-box">
-<h3>Doa & Ucapan</h3>
-<div id="ucapanList"></div>
-</div>
-
+  </div>
 </section>
 
-<h2 class="section-title reveal">Wedding Gift</h2>
+<!-- ═══════════════════════════════════
+     WEDDING GIFT
+═══════════════════════════════════ -->
+<h2 class="section-title reveal"><span class="title-gem">✿</span> Wedding Gift <span class="title-gem">✿</span></h2>
 
 <section class="gift-section reveal">
+  <div style="max-width:780px;margin:0 auto;">
 
-<p class="gift-intro">
-Tanpa mengurangi rasa hormat bagi tamu yang ingin mengirimkan hadiah kepada kami,
-dapat melalui nomor rekening berikut:
-</p>
+    <p class="gift-intro">
+      Tanpa mengurangi rasa hormat, bagi tamu yang ingin memberikan hadiah
+      kepada kami, dapat melalui nomor rekening berikut.
+      Tekan <em>Salin</em> untuk menyalin nomor rekening.
+    </p>
 
-<div class="gift-container">
+    <div class="gift-container">
 
-<div class="gift-card">
-<h3>MUHAMMAD ALWAN FIKRI</h3>
-<p><strong>Bank Mandiri</strong><br>1260011936944</p>
-<p><strong>Bank BRI</strong><br>644901013075539</p>
-</div>
+      <div class="gift-card">
+        <h3>Muhammad Alwan Fikri</h3>
+        <div class="bank-entry">
+          <p class="bank-name">Bank Mandiri</p>
+          <div class="account-row">
+            <span class="account-number">1260011936944</span>
+            <button class="copy-btn" onclick="copyAccount(this,'1260011936944')">Salin</button>
+          </div>
+        </div>
+        <div class="bank-entry">
+          <p class="bank-name">Bank BRI</p>
+          <div class="account-row">
+            <span class="account-number">644901013075539</span>
+            <button class="copy-btn" onclick="copyAccount(this,'644901013075539')">Salin</button>
+          </div>
+        </div>
+      </div>
 
-<div class="gift-card">
-<h3>KHANSA UFAHIRA</h3>
-<p><strong>Bank BCA</strong><br>1663568349</p>
-</div>
+      <div class="gift-card">
+        <h3>Khansa Ufahira</h3>
+        <div class="bank-entry">
+          <p class="bank-name">Bank BCA</p>
+          <div class="account-row">
+            <span class="account-number">1663568349</span>
+            <button class="copy-btn" onclick="copyAccount(this,'1663568349')">Salin</button>
+          </div>
+        </div>
+      </div>
 
-</div>
-
+    </div>
+  </div>
 </section>
 
-<h2 class="section-title reveal">Gallery</h2>
+<!-- ═══════════════════════════════════
+     GALLERY
+═══════════════════════════════════ -->
+<h2 class="section-title reveal"><span class="title-gem">✿</span> Gallery <span class="title-gem">✿</span></h2>
 
 <section class="gallery reveal">
-<div class="carousel">
-  <div class="carousel-track">
-    <div class="photo-slide">Photo</div>
-    <div class="photo-slide">Photo</div>
-    <div class="photo-slide">Photo</div>
+  <div class="javanese-card carousel-wrap" style="padding:30px;">
+    <div class="carousel-track" id="carouselTrack">
+      <div class="photo-slide">Foto 1</div>
+      <div class="photo-slide">Foto 2</div>
+      <div class="photo-slide">Foto 3</div>
+    </div>
+    <div class="carousel-nav" id="carouselNav"></div>
   </div>
-</div>
 </section>
 
-<img src="pic2.png" class="bottom-illustration">
+<!-- ═══════════════════════════════════
+     FOOTER
+═══════════════════════════════════ -->
+<div class="plumeria-row" aria-hidden="true">✿ ✿ ✿ ✿ ✿</div>
+<img src="pic3.png" class="bottom-illustration" alt="ornamen bawah">
+<footer>
+  <p>With love, <span>Khansa &amp; Fikri</span> · 13 Juni 2026</p>
+</footer>
 
-<audio id="bgMusic" loop>
-<source src="music.mp3" type="audio/mpeg">
-</audio>
+<!-- AUDIO -->
+<audio id="bgMusic" loop><source src="music.mp3" type="audio/mpeg"></audio>
 
 <script src="script.js"></script>
 </body>
-
 </html>
