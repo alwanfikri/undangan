@@ -142,7 +142,6 @@ const scriptURL="https://script.google.com/macros/s/AKfycbxzaoGM7qpX3q1kvsCzvgUU
 ================================ */
 
 const params=new URLSearchParams(window.location.search)
-
 const guestName=decodeURIComponent(params.get("to")||"")
 
 document.getElementById("openingGuest").innerText=
@@ -166,7 +165,6 @@ return String(n).padStart(2,"0")
 function tick(){
 
 const d=target-Date.now()
-
 if(d<=0)return
 
 document.getElementById("days").textContent=
@@ -261,12 +259,10 @@ function copyAccount(btn,number){
 
 navigator.clipboard.writeText(number)
 
-const txt=btn.innerText
-
-btn.innerText=i18n[currentLang].copied
+btn.classList.add("copied")
 
 setTimeout(()=>{
-btn.innerText=i18n[currentLang].copy
+btn.classList.remove("copied")
 },2000)
 
 }
@@ -330,11 +326,9 @@ async function loadUcapan(){
 try{
 
 const res=await fetch(scriptURL)
-
 const data=await res.json()
 
 const box=document.getElementById("ucapanList")
-
 box.innerHTML=""
 
 const items=data.reverse().slice(0,50)
@@ -342,7 +336,6 @@ const items=data.reverse().slice(0,50)
 if(!items.length){
 
 box.innerHTML=`<p style="text-align:center;font-style:italic;">${i18n[currentLang]["ucapan-empty"]}</p>`
-
 return
 
 }
@@ -350,18 +343,13 @@ return
 items.forEach(item=>{
 
 const div=document.createElement("div")
-
 div.className="ucapan-item"
 
 div.innerHTML=`
 
 <strong>${item.Nama}${item.Kategori?" · "+item.Kategori:""}</strong>
-
 <p>${item.Ucapan}</p>
-
-<span class="badge ${item.Kehadiran==="Hadir"?"hadir":"tidak"}">
-${item.Kehadiran}
-</span>
+<span class="badge ${item.Kehadiran==="Hadir"?"hadir":"tidak"}">${item.Kehadiran}</span>
 
 `
 
@@ -385,43 +373,60 @@ function reveal(){
 const h=window.innerHeight
 
 document.querySelectorAll(".reveal").forEach(el=>{
-
 if(el.getBoundingClientRect().top<h-70){
-
 el.classList.add("active")
-
 }
-
 })
 
 }
 
 window.addEventListener("scroll",reveal)
-
 window.addEventListener("load",reveal)
 
 
 /* ===============================
-   GALLERY CAROUSEL
+   AUTO GALLERY LOADER
 ================================ */
 
-function initCarousel(){
+function loadGallery(){
 
-const track=document.querySelector(".carousel-track")
+const track=document.getElementById("galleryTrack")
+if(!track) return
 
-if(!track)return
+let i=1
+const maxImages=200
 
-track.addEventListener("wheel",e=>{
+function tryLoad(){
 
-e.preventDefault()
+if(i>maxImages) return
 
-track.scrollLeft+=e.deltaY
+const img=new Image()
 
-})
+img.src=`gallery/${i}.jpg`
+
+img.onload=()=>{
+
+const slide=document.createElement("div")
+slide.className="photo-slide"
+
+slide.innerHTML=`<img src="gallery/${i}.jpg" loading="lazy">`
+
+track.appendChild(slide)
+
+i++
+tryLoad()
 
 }
 
-window.addEventListener("load",initCarousel)
+img.onerror=()=>{}
+
+}
+
+tryLoad()
+
+}
+
+window.addEventListener("load",loadGallery)
 
 
 /* ===============================
@@ -438,49 +443,11 @@ const start="20260613T010000Z"
 const end="20260613T070000Z"
 
 const title=encodeURIComponent("Pernikahan Khansa & Fikri")
-
 const loc=encodeURIComponent("Depok, Jawa Barat")
 
-const url=
+btn.href=
 `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&location=${loc}`
-
-btn.href=url
 
 }
 
 window.addEventListener("load",initCalendar)
-
-
-/* ===============================
-   MUSIC PLAYER
-================================ */
-
-function initMusicPlayer(){
-
-const btn=document.getElementById("musicBtn")
-
-const audio=document.getElementById("bgMusic")
-
-if(!btn)return
-
-btn.addEventListener("click",()=>{
-
-if(audio.paused){
-
-audio.play()
-
-btn.textContent="❚❚"
-
-}else{
-
-audio.pause()
-
-btn.textContent="▶"
-
-}
-
-})
-
-}
-
-window.addEventListener("load",initMusicPlayer)
