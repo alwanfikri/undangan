@@ -60,7 +60,7 @@ body {
 .opening-content {
   position: absolute;
   z-index: 2;
-  top: 26%;
+  top: 12%;
   left: 50%;
   transform: translateX(-50%);
   width: 62%;
