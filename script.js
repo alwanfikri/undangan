@@ -315,7 +315,13 @@ const slide=document.createElement("div")
 
 slide.className="photo-slide"
 
-slide.innerHTML=`<img src="${src}" loading="lazy">`
+const img=document.createElement("img")
+
+img.src=src
+img.loading="lazy"
+img.alt="Gallery photo"
+
+slide.appendChild(img)
 
 track.appendChild(slide)
 
@@ -323,7 +329,7 @@ track.appendChild(slide)
 
 }catch(e){
 
-console.error("gallery error",e)
+console.error("Gallery load error",e)
 
 }
 
