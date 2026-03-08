@@ -9,92 +9,74 @@
 </head>
 <body>
 
-<!-- ═══════════════════════════════════
-     FLOATING PETALS
-═══════════════════════════════════ -->
+<!-- LANGUAGE SWITCHER -->
+<div class="lang-switcher" id="langSwitcher">
+  <button class="lang-btn active" data-lang="id">ID</button>
+  <span class="lang-sep">|</span>
+  <button class="lang-btn" data-lang="en">EN</button>
+</div>
+
+<!-- FLOATING PETALS -->
 <div id="petalsContainer"></div>
 
-<!-- ═══════════════════════════════════
-     OPENING — uses pic1.png as frame background
-═══════════════════════════════════ -->
+<!-- OPENING -->
 <div id="opening" class="opening">
   <div class="opening-frame"></div>
   <div class="opening-content">
     <div class="opening-names">Khansa<br>&amp; Fikri</div>
-    <p class="opening-to">Kepada Yth.</p>
+    <p class="opening-to" data-i18n="to">Kepada Yth.</p>
     <h3 class="opening-guest" id="openingGuest"></h3>
     <div class="opening-divider"></div>
-    <button class="open-btn" id="openBtn">✦ Buka Undangan ✦</button>
+    <button class="open-btn" id="openBtn" data-i18n="open">✦ Buka Undangan ✦</button>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════
-     TOP ORNAMENT (pic2)
-═══════════════════════════════════ -->
+<!-- TOP ORNAMENT -->
 <img src="pic2.png" class="top-illustration" alt="ornamen atas">
 
-<!-- ═══════════════════════════════════
-     BISMILLAH
-═══════════════════════════════════ -->
+<!-- BISMILLAH -->
 <section class="bismillah-section reveal">
   <div class="javanese-card bismillah-inner">
-    <!-- SVG corner flowers injected by JS -->
-
-
     <div class="ornaline">✦</div>
-
     <p class="bismillah-latin">Bismillahirrahmanirrahim</p>
-
     <div class="ornaline">✦</div>
-
-    <p class="translation">
+    <p class="translation" data-i18n="verse">
       "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu
       pasangan dari jenismu sendiri agar kamu merasa tenteram kepadanya,
       dan Dia menjadikan di antaramu rasa kasih dan sayang."
       <br><em>(QS. Ar-Rum: 21)</em>
     </p>
-
     <div class="ornaline">✦</div>
-
     <div class="name-frame">
       <h2 class="bride-name">Khansa Ufahira</h2>
-      <p class="name-sub">Putri dari Bapak &amp; Ibu</p>
+      <p class="name-sub" data-i18n="daughter">Putri dari Bapak &amp; Ibu</p>
       <div class="ampersand">&amp;</div>
       <h2 class="groom-name">Muhammad Alwan Fikri</h2>
-      <p class="name-sub">Putra dari Bapak &amp; Ibu</p>
+      <p class="name-sub" data-i18n="son">Putra dari Bapak &amp; Ibu</p>
     </div>
-
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     COUNTDOWN
-═══════════════════════════════════ -->
+<!-- COUNTDOWN -->
 <section class="hero reveal">
-  <!-- Decorative lanterns above countdown -->
   <div class="lantern-row" aria-hidden="true" id="lanternRow"></div>
-
-  <p class="hero-sub" style="margin-top:20px;">We Are Getting Married</p>
-
+  <p class="hero-sub" style="margin-top:20px;" data-i18n="getting-married">We Are Getting Married</p>
   <div class="flip-countdown">
-    <div class="flip-box"><span id="days">00</span><small>Hari</small></div>
-    <div class="flip-box"><span id="hours">00</span><small>Jam</small></div>
-    <div class="flip-box"><span id="minutes">00</span><small>Menit</small></div>
-    <div class="flip-box"><span id="seconds">00</span><small>Detik</small></div>
+    <div class="flip-box"><span id="days">00</span><small data-i18n="days">Hari</small></div>
+    <div class="flip-box"><span id="hours">00</span><small data-i18n="hours">Jam</small></div>
+    <div class="flip-box"><span id="minutes">00</span><small data-i18n="minutes">Menit</small></div>
+    <div class="flip-box"><span id="seconds">00</span><small data-i18n="seconds">Detik</small></div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     EVENT DETAILS
-═══════════════════════════════════ -->
-<h2 class="section-title reveal"><span class="title-gem">✿</span> Rangkaian Acara <span class="title-gem">✿</span></h2>
-
+<!-- EVENT DETAILS -->
+<h2 class="section-title reveal"><span class="title-gem">✿</span> <span data-i18n="event-title">Rangkaian Acara</span> <span class="title-gem">✿</span></h2>
 <section class="details reveal">
   <div class="javanese-card detail-card">
-    <p class="detail-event-name">Akad Nikah &amp; Resepsi</p>
+    <p class="detail-event-name" data-i18n="event-name">Akad Nikah &amp; Resepsi</p>
     <div class="ornaline">✦</div>
-    <p class="detail-date">Sabtu, 13 Juni 2026</p>
-    <p class="detail-time">08.00 WIB — Selesai</p>
+    <p class="detail-date" data-i18n="event-date">Sabtu, 13 Juni 2026</p>
+    <p class="detail-time" data-i18n="event-time">08.00 WIB — Selesai</p>
     <div class="ornaline" style="margin:16px 0;">✦</div>
     <p class="detail-location">Depok, Jawa Barat</p>
     <a class="calendar-btn" id="calendarBtn" href="#" target="_blank">
@@ -102,131 +84,103 @@
         <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/>
         <line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
       </svg>
-      Simpan ke Kalender
+      <span data-i18n="save-calendar">Simpan ke Kalender</span>
     </a>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     LOKASI
-═══════════════════════════════════ -->
-<h2 class="section-title reveal"><span class="title-gem">✿</span> Lokasi <span class="title-gem">✿</span></h2>
-
+<!-- LOKASI -->
+<h2 class="section-title reveal"><span class="title-gem">✿</span> <span data-i18n="location-title">Lokasi</span> <span class="title-gem">✿</span></h2>
 <section class="map-section reveal">
   <div class="map-wrap">
-    <iframe
-      src="https://maps.google.com/maps?q=-6.376053268106767,106.85938933615078&z=15&output=embed"
-      loading="lazy" title="Lokasi Pernikahan">
-    </iframe>
+    <iframe src="https://maps.google.com/maps?q=-6.376053268106767,106.85938933615078&z=15&output=embed"
+      loading="lazy" title="Lokasi Pernikahan"></iframe>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     RSVP
-═══════════════════════════════════ -->
+<!-- RSVP -->
 <h2 class="section-title reveal"><span class="title-gem">✿</span> RSVP <span class="title-gem">✿</span></h2>
-
 <section class="rsvp-section reveal">
   <div class="javanese-card rsvp-inner">
-
     <form id="rsvpForm" class="rsvp-form">
-
       <div class="form-group">
-        <label>Nama Lengkap</label>
-        <input type="text" id="nama" placeholder="Masukkan nama Anda" required>
+        <label data-i18n="form-name">Nama Lengkap</label>
+        <input type="text" id="nama" data-i18n-ph="form-name-ph" placeholder="Masukkan nama Anda" required>
       </div>
-
       <div class="form-group">
-        <label>Kategori</label>
+        <label data-i18n="form-category">Kategori</label>
         <select id="kategori" required>
-          <option value="">Pilih kategori</option>
-          <option value="Keluarga">Keluarga</option>
-          <option value="Rekan Kerja">Rekan Kerja</option>
-          <option value="Teman">Teman</option>
+          <option value="" data-i18n="form-category-ph">Pilih kategori</option>
+          <option value="Keluarga" data-i18n="cat-family">Keluarga</option>
+          <option value="Rekan Kerja" data-i18n="cat-colleague">Rekan Kerja</option>
+          <option value="Teman" data-i18n="cat-friend">Teman</option>
         </select>
       </div>
-
       <div class="form-group">
-        <label>Kesediaan Hadir</label>
+        <label data-i18n="form-attend">Kesediaan Hadir</label>
         <select id="kehadiran" required>
-          <option value="">Konfirmasi kehadiran</option>
-          <option value="Hadir">Hadir</option>
-          <option value="Berhalangan">Berhalangan</option>
+          <option value="" data-i18n="form-attend-ph">Konfirmasi kehadiran</option>
+          <option value="Hadir" data-i18n="attend-yes">Hadir</option>
+          <option value="Berhalangan" data-i18n="attend-no">Berhalangan</option>
         </select>
       </div>
-
       <div class="form-group">
-        <label>Doa &amp; Ucapan</label>
-        <textarea id="ucapan" placeholder="Tuliskan doa dan ucapan tulus Anda..."></textarea>
+        <label data-i18n="form-wishes">Doa &amp; Ucapan</label>
+        <textarea id="ucapan" data-i18n-ph="form-wishes-ph" placeholder="Tuliskan doa dan ucapan tulus Anda..."></textarea>
       </div>
-
-      <button type="submit" class="submit-btn">Kirim</button>
+      <button type="submit" class="submit-btn" data-i18n="form-submit">Kirim</button>
     </form>
-
     <p id="formMessage"></p>
-
     <div class="ucapan-box">
-      <h3>✦ Doa &amp; Ucapan ✦</h3>
+      <h3>✦ <span data-i18n="wishes-title">Doa &amp; Ucapan</span> ✦</h3>
       <div id="ucapanList"></div>
     </div>
-
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     WEDDING GIFT
-═══════════════════════════════════ -->
-<h2 class="section-title reveal"><span class="title-gem">✿</span> Wedding Gift <span class="title-gem">✿</span></h2>
-
+<!-- WEDDING GIFT -->
+<h2 class="section-title reveal"><span class="title-gem">✿</span> <span data-i18n="gift-title">Wedding Gift</span> <span class="title-gem">✿</span></h2>
 <section class="gift-section reveal">
   <div style="max-width:780px;margin:0 auto;">
-
-    <p class="gift-intro">
+    <p class="gift-intro" data-i18n="gift-intro">
       Tanpa mengurangi rasa hormat, bagi tamu yang ingin memberikan hadiah
       kepada kami, dapat melalui nomor rekening berikut.
       Tekan <em>Salin</em> untuk menyalin nomor rekening.
     </p>
-
     <div class="gift-container">
-
       <div class="gift-card">
         <h3>Muhammad Alwan Fikri</h3>
         <div class="bank-entry">
           <p class="bank-name">Bank Mandiri</p>
           <div class="account-row">
             <span class="account-number">1260011936944</span>
-            <button class="copy-btn" onclick="copyAccount(this,'1260011936944')">Salin</button>
+            <button class="copy-btn" onclick="copyAccount(this,'1260011936944')" data-i18n="copy">Salin</button>
           </div>
         </div>
         <div class="bank-entry">
           <p class="bank-name">Bank BRI</p>
           <div class="account-row">
             <span class="account-number">644901013075539</span>
-            <button class="copy-btn" onclick="copyAccount(this,'644901013075539')">Salin</button>
+            <button class="copy-btn" onclick="copyAccount(this,'644901013075539')" data-i18n="copy">Salin</button>
           </div>
         </div>
       </div>
-
       <div class="gift-card">
         <h3>Khansa Ufahira</h3>
         <div class="bank-entry">
           <p class="bank-name">Bank BCA</p>
           <div class="account-row">
             <span class="account-number">1663568349</span>
-            <button class="copy-btn" onclick="copyAccount(this,'1663568349')">Salin</button>
+            <button class="copy-btn" onclick="copyAccount(this,'1663568349')" data-i18n="copy">Salin</button>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     GALLERY
-═══════════════════════════════════ -->
-<h2 class="section-title reveal"><span class="title-gem">✿</span> Gallery <span class="title-gem">✿</span></h2>
-
+<!-- GALLERY -->
+<h2 class="section-title reveal"><span class="title-gem">✿</span> <span data-i18n="gallery-title">Gallery</span> <span class="title-gem">✿</span></h2>
 <section class="gallery reveal">
   <div class="javanese-card carousel-wrap" style="padding:30px;">
     <div class="carousel-track" id="carouselTrack">
@@ -238,13 +192,11 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     FOOTER
-═══════════════════════════════════ -->
+<!-- FOOTER -->
 <div class="plumeria-row" aria-hidden="true">✿ ✿ ✿ ✿ ✿</div>
 <img src="pic3.png" class="bottom-illustration" alt="ornamen bawah">
 <footer>
-  <p>With love, <span>Khansa &amp; Fikri</span> · 13 Juni 2026</p>
+  <p><span data-i18n="footer-love">With love,</span> <span>Khansa &amp; Fikri</span> · 13 Juni 2026</p>
 </footer>
 
 <!-- MUSIC PLAYER -->
@@ -260,7 +212,6 @@
 
 <!-- AUDIO -->
 <audio id="bgMusic" loop><source src="music.mp3" type="audio/mpeg"></audio>
-
 <script src="script.js"></script>
 </body>
 </html>

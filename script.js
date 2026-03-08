@@ -1,3 +1,129 @@
+/* ─────────────────────────────
+   i18n — LANGUAGE SYSTEM
+───────────────────────────── */
+const i18n = {
+  id: {
+    "to":               "Kepada Yth.",
+    "open":             "✦ Buka Undangan ✦",
+    "verse":            `"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan dari jenismu sendiri agar kamu merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."<br><em>(QS. Ar-Rum: 21)</em>`,
+    "daughter":         "Putri dari Bapak & Ibu",
+    "son":              "Putra dari Bapak & Ibu",
+    "getting-married":  "We Are Getting Married",
+    "days":             "Hari",
+    "hours":            "Jam",
+    "minutes":          "Menit",
+    "seconds":          "Detik",
+    "event-title":      "Rangkaian Acara",
+    "event-name":       "Akad Nikah & Resepsi",
+    "event-date":       "Sabtu, 13 Juni 2026",
+    "event-time":       "08.00 WIB — Selesai",
+    "save-calendar":    "Simpan ke Kalender",
+    "location-title":   "Lokasi",
+    "form-name":        "Nama Lengkap",
+    "form-name-ph":     "Masukkan nama Anda",
+    "form-category":    "Kategori",
+    "form-category-ph": "Pilih kategori",
+    "cat-family":       "Keluarga",
+    "cat-colleague":    "Rekan Kerja",
+    "cat-friend":       "Teman",
+    "form-attend":      "Kesediaan Hadir",
+    "form-attend-ph":   "Konfirmasi kehadiran",
+    "attend-yes":       "Hadir",
+    "attend-no":        "Berhalangan",
+    "form-wishes":      "Doa & Ucapan",
+    "form-wishes-ph":   "Tuliskan doa dan ucapan tulus Anda...",
+    "form-submit":      "Kirim",
+    "wishes-title":     "Doa & Ucapan",
+    "gift-title":       "Wedding Gift",
+    "gift-intro":       `Tanpa mengurangi rasa hormat, bagi tamu yang ingin memberikan hadiah kepada kami, dapat melalui nomor rekening berikut. Tekan <em>Salin</em> untuk menyalin nomor rekening.`,
+    "copy":             "Salin",
+    "copied":           "✓ Tersalin",
+    "gallery-title":    "Galeri",
+    "footer-love":      "With love,",
+    "rsvp-sending":     "Mengirim...",
+    "rsvp-success":     "Terima kasih atas doa dan kehadirannya 🤍",
+    "rsvp-error":       "Terjadi kesalahan. Mohon coba lagi.",
+    "ucapan-empty":     "Jadilah yang pertama memberikan ucapan 🤍",
+  },
+  en: {
+    "to":               "Dear,",
+    "open":             "✦ Open Invitation ✦",
+    "verse":            `"And of His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy."<br><em>(QS. Ar-Rum: 21)</em>`,
+    "daughter":         "Daughter of Mr. & Mrs.",
+    "son":              "Son of Mr. & Mrs.",
+    "getting-married":  "We Are Getting Married",
+    "days":             "Days",
+    "hours":            "Hours",
+    "minutes":          "Mins",
+    "seconds":          "Secs",
+    "event-title":      "Event Schedule",
+    "event-name":       "Akad Nikah & Reception",
+    "event-date":       "Saturday, June 13, 2026",
+    "event-time":       "08.00 WIB — Until Finished",
+    "save-calendar":    "Save to Calendar",
+    "location-title":   "Location",
+    "form-name":        "Full Name",
+    "form-name-ph":     "Enter your name",
+    "form-category":    "Category",
+    "form-category-ph": "Select category",
+    "cat-family":       "Family",
+    "cat-colleague":    "Colleague",
+    "cat-friend":       "Friend",
+    "form-attend":      "Attendance",
+    "form-attend-ph":   "Confirm attendance",
+    "attend-yes":       "Attending",
+    "attend-no":        "Unable to Attend",
+    "form-wishes":      "Prayer & Wishes",
+    "form-wishes-ph":   "Share your heartfelt prayers and wishes...",
+    "form-submit":      "Send",
+    "wishes-title":     "Prayers & Wishes",
+    "gift-title":       "Wedding Gift",
+    "gift-intro":       `Without diminishing our respect, for guests who wish to give a gift, you may transfer to the following bank accounts. Press <em>Copy</em> to copy the account number.`,
+    "copy":             "Copy",
+    "copied":           "✓ Copied",
+    "gallery-title":    "Gallery",
+    "footer-love":      "With love,",
+    "rsvp-sending":     "Sending...",
+    "rsvp-success":     "Thank you for your prayers and attendance 🤍",
+    "rsvp-error":       "An error occurred. Please try again.",
+    "ucapan-empty":     "Be the first to share your wishes 🤍",
+  }
+};
+
+let currentLang = "id";
+
+function applyLang(lang) {
+  currentLang = lang;
+  const t = i18n[lang];
+
+  // text nodes
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+
+  // placeholders
+  document.querySelectorAll("[data-i18n-ph]").forEach(el => {
+    const key = el.getAttribute("data-i18n-ph");
+    if (t[key] !== undefined) el.placeholder = t[key];
+  });
+
+  // lang switcher active state
+  document.querySelectorAll(".lang-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.lang === lang);
+  });
+
+  document.documentElement.lang = lang;
+}
+
+function initLangSwitcher() {
+  document.querySelectorAll(".lang-btn").forEach(btn => {
+    btn.addEventListener("click", () => applyLang(btn.dataset.lang));
+  });
+  applyLang("id"); // default
+}
+window.addEventListener("load", initLangSwitcher);
+
 const scriptURL = "https://script.google.com/macros/s/AKfycbxzaoGM7qpX3q1kvsCzvgUU1NV4oe6BBksLsdEW49DoMB5nCiTj8ycMVVBUMpybgYA1/exec";
 
 /* ─────────────────────────────
@@ -200,17 +326,17 @@ document.getElementById("rsvpForm").addEventListener("submit", async e => {
   };
   const msg = document.getElementById("formMessage");
   msg.style.color = "";
-  msg.innerText   = "Mengirim...";
+  msg.innerText   = i18n[currentLang]["rsvp-sending"];
   try {
     await fetch(scriptURL, { method:"POST", body:JSON.stringify(data) });
     msg.style.color = "#8fa882";
-    msg.innerText   = "Terima kasih atas doa dan kehadirannya 🤍";
+    msg.innerText   = i18n[currentLang]["rsvp-success"];
     e.target.reset();
     if (guestName) document.getElementById("nama").value = guestName;
     loadUcapan();
   } catch {
     msg.style.color = "#c0392b";
-    msg.innerText   = "Terjadi kesalahan. Mohon coba lagi.";
+    msg.innerText   = i18n[currentLang]["rsvp-error"];
   }
 });
 
@@ -225,7 +351,7 @@ async function loadUcapan() {
     box.innerHTML = "";
     const items = data.reverse().slice(0, 50).filter(i => i.Nama && i.Ucapan);
     if (!items.length) {
-      box.innerHTML = '<p style="text-align:center;font-style:italic;font-size:.9rem;color:#9a7050;padding:16px 0;">Jadilah yang pertama memberikan ucapan 🤍</p>';
+      box.innerHTML = `<p style="text-align:center;font-style:italic;font-size:.9rem;color:#9a7050;padding:16px 0;">${i18n[currentLang]["ucapan-empty"]}</p>`;
       return;
     }
     items.forEach(item => {
