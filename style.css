@@ -44,7 +44,7 @@ body::before {
   background-repeat: repeat;
   background-size: 420px;
   background-attachment: fixed;
-  opacity: 0.01;
+  opacity: 0.07;
   pointer-events: none;
   z-index: 0;
 }
@@ -881,4 +881,103 @@ top:34% !important;
 transform:translate(-50%,-24%) !important;
 }
 
+}
+/* =====================
+   MOBILE OPTIMIZATIONS
+   Tested breakpoints:
+   - 320px (SE lama)
+   - 375px (iPhone SE/13 mini)
+   - 390px (iPhone 14/15)
+   - 412px (Android mid-range)
+   - 480px (phablet/kecil)
+===================== */
+
+/* ── Semua HP ≤480px ── */
+@media (max-width: 480px) {
+
+  /* Header banner */
+  .top-illustration { width: 100%; }
+
+  /* Bismillah card */
+  .bismillah-inner { padding: 28px 18px 24px; }
+  .bismillah-latin { font-size: 1.1rem; }
+  .translation { font-size: .88rem; line-height: 1.7; }
+  .bride-name, .groom-name { font-size: 1.4rem; }
+  .name-sub { font-size: .82rem; }
+  .ampersand { font-size: 2.8rem; }
+
+  /* Countdown */
+  .hero { padding: 24px 12px; }
+  .hero-sub { font-size: .78rem; letter-spacing: 3px; }
+  .flip-countdown { gap: 8px; }
+  .flip-box { width: 60px; min-width: 60px; }
+  .flip-box span { font-size: 1.4rem; }
+  .flip-box small { font-size: .55rem; letter-spacing: 1.5px; }
+
+  /* Detail acara */
+  .detail-card { padding: 28px 18px 24px; }
+  .detail-event-name { font-size: 1.15rem; }
+  .detail-date { font-size: .95rem; }
+  .calendar-btn { font-size: .7rem; padding: 9px 16px; }
+
+  /* Map */
+  .map-wrap iframe { height: 220px; }
+
+  /* RSVP */
+  .rsvp-inner { padding: 28px 16px 24px; }
+  .rsvp-form input,
+  .rsvp-form select,
+  .rsvp-form textarea { font-size: .9rem; padding: 10px 12px; }
+  .submit-btn { font-size: .72rem; padding: 13px 24px; }
+
+  /* Gift */
+  .gift-card { padding: 20px 16px; }
+  .gift-card h3 { font-size: 1rem; }
+  .account-number { font-size: .78rem; letter-spacing: 1px; }
+  .copy-btn { font-size: .65rem; padding: 5px 10px; }
+  .gift-intro { font-size: .85rem; padding: 0 16px; }
+
+  /* Gallery */
+  .photo-slide { min-width: 180px; height: 200px; }
+
+  /* Section titles */
+  .section-title { font-size: .75rem; letter-spacing: 3px; margin: 32px 0 16px; }
+
+  /* Footer */
+  footer { padding: 24px 16px; font-size: .82rem; }
+
+  /* Language switcher — smaller on mobile */
+  .lang-switcher { top: 10px; right: 10px; padding: 4px 10px; }
+  .lang-btn { font-size: .7rem; }
+
+  /* Music player */
+  .music-player { bottom: 16px; right: 12px; padding: 6px 12px 6px 6px; }
+  .music-play-btn { width: 32px; height: 32px; font-size: 12px; }
+  .music-title { font-size: .65rem; }
+}
+
+/* ── Sangat kecil ≤360px (Galaxy A series lama) ── */
+@media (max-width: 360px) {
+  .opening-names { font-size: 1.8rem; }
+  .flip-box { width: 54px; min-width: 54px; }
+  .flip-box span { font-size: 1.25rem; }
+  .gift-container { flex-direction: column; }
+  .gift-card { min-width: 100%; }
+  .photo-slide { min-width: 160px; height: 180px; }
+}
+
+/* ── Tablet 600–900px ── */
+@media (min-width: 601px) and (max-width: 900px) {
+  .gift-container { gap: 16px; }
+  .gift-card { min-width: 260px; }
+  .opening-names { font-size: 2.6rem; }
+  .photo-slide { min-width: 260px; height: 280px; }
+}
+
+/* ── Landscape HP (tinggi <500px) ── */
+@media (max-height: 500px) and (orientation: landscape) {
+  .opening-content { top: 18% !important; transform: translate(-50%, 0) !important; }
+  .opening-names { font-size: 1.6rem; }
+  .open-btn { margin-top: 6px; padding: 8px 22px; font-size: .65rem; }
+  .flip-box { width: 52px; } .flip-box span { font-size: 1.2rem; }
 }
