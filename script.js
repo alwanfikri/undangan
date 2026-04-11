@@ -68,7 +68,7 @@ const i18n = {
     "wishes-title":         "Doa & Ucapan",
     /* gift */
     "gift-title":           "Hadiah Pernikahan",
-    "gift-intro":           "Tanpa mengurangi rasa hormat, bagi tamu yang ingin memberikan hadiah kepada kami, dapat melalui nomor rekening berikut.",
+    "gift-intro":           "Doa Restu Anda merupakan karunia yang sangat berarti bagi kami. Dan jika memberi adalah ungkapan tanda kasih Anda, Anda dapat memberi kado secara cashless..",
     "copy":                 "Salin",
     "copied":               "✓ Tersalin",
     /* gallery */
@@ -132,7 +132,7 @@ const i18n = {
     "wishes-title":         "Prayers & Wishes",
     /* gift */
     "gift-title":           "Wedding Gift",
-    "gift-intro":           "Without diminishing our respect, for guests who wish to give a gift, you may transfer to the following bank accounts.",
+    "gift-intro":           "Your prayers and blessings are a truly meaningful gift to us. And if giving is an expression of your love, you can give a cashless gift.",
     "copy":                 "Copy",
     "copied":               "✓ Copied",
     /* gallery */
