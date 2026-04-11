@@ -18,8 +18,8 @@ const i18n = {
     "open":                 "✦ Buka Undangan ✦",
     /* bismillah */
     "verse":                `"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan dari jenismu sendiri agar kamu merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."<br><em>(QS. Ar-Rum: 21)</em>`,
-    "daughter":             "Putri dari Bapak Didik Noorcahyono & Ibu Tentrem Hartati",
-    "son":                  "Putra dari Bapak Alm. Farid Anshori & Ibu Siti Wahyuni",
+    "daughter":             "Putri ke 2 dari Bapak Didik Noorcahyono & Ibu Tentrem Hartati",
+    "son":                  "Putra ke 5dari Bapak Alm. Farid Anshori & Ibu Siti Wahyuni",
     /* countdown */
     "getting-married":      "Kami Akan Menikah",
     "days":                 "Hari",
@@ -28,9 +28,11 @@ const i18n = {
     "seconds":              "Detik",
     /* event */
     "event-title":          "Rangkaian Acara",
-    "event-name":           "Akad Nikah & Resepsi",
+    "event-name1":           "Akad Nikah",
+    "event-name2":           "Resepsi",
     "event-date":           "Sabtu, 13 Juni 2026",
-    "event-time":           "08.00 WIB — Selesai",
+    "event-time1":           "07.30 WIB — 09.00",
+    "event-time2":           "11.00 WIB — 13.00",
     "save-calendar":        "Simpan ke Kalender",
     /* lokasi */
     "location-title":       "Lokasi",
@@ -73,8 +75,8 @@ const i18n = {
     "open":                 "✦ Open Invitation ✦",
     /* bismillah */
     "verse":                `"And of His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy."<br><em>(QS. Ar-Rum: 21)</em>`,
-    "daughter":             "Daughter of Mr. Didik Noorcahyono & Mrs. Tentrem Hartati",
-    "son":                  "Son of the late Mr. Farid Anshori & Mrs. Siti Wahyuni",
+    "daughter":             "2nd Daughter of Mr. Didik Noorcahyono & Mrs. Tentrem Hartati",
+    "son":                  "5th Son of the late Mr. Farid Anshori & Mrs. Siti Wahyuni",
     /* countdown */
     "getting-married":      "We Are Getting Married",
     "days":                 "Days",
@@ -83,9 +85,11 @@ const i18n = {
     "seconds":              "Secs",
     /* event */
     "event-title":          "Event Schedule",
-    "event-name":           "Akad Nikah & Reception",
+    "event-name1":           "Akad Nikah",
+    "event-name2":           "Reception",
     "event-date":           "Saturday, June 13, 2026",
-    "event-time":           "08.00 WIB — Until Finished",
+    "event-time1":           "07.30 WIB — 09.00",
+    "event-time2":           "11.00 WIB — 13.00",
     "save-calendar":        "Save to Calendar",
     /* lokasi */
     "location-title":       "Location",
