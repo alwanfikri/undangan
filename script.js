@@ -19,7 +19,7 @@ const i18n = {
     /* bismillah */
     "verse":                `"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan dari jenismu sendiri agar kamu merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."<br><em>(QS. Ar-Rum: 21)</em>`,
     "daughter":             "Putri ke 2 dari Bapak Didik Noorcahyono & Ibu Tentrem Hartati",
-    "son":                  "Putra ke 5dari Bapak Alm. Farid Anshori & Ibu Siti Wahyuni",
+    "son":                  "Putra ke 5 dari Bapak Alm. Farid Anshori & Ibu Siti Wahyuni",
     /* countdown */
     "getting-married":      "Kami Akan Menikah",
     "days":                 "Hari",
