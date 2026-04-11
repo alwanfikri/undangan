@@ -397,6 +397,13 @@ const res=await fetch(scriptURL+"?action=gallery")
 
 const images=await res.json()
 
+// Sort images by numeric filename (1.jpg, 2.jpg, 3.jpg, etc.)
+images.sort((a, b) => {
+  const numA = parseInt(a.match(/(\d+)\./)?.[1] || '0')
+  const numB = parseInt(b.match(/(\d+)\./)?.[1] || '0')
+  return numA - numB
+})
+
 images.forEach(src=>{
 
 const slide=document.createElement("div")
