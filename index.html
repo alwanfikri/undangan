@@ -4,7 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Khansa & Fikri — 13 Juni 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<!-- Preconnect untuk optimasi loading -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://script.google.com">
+<link rel="dns-prefetch" href="https://script.google.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap&font-display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
 <!-- ═══ META OG — WhatsApp / social preview ═══ -->
@@ -32,9 +39,9 @@
 
 <!-- LANGUAGE SWITCHER -->
 <div class="lang-switcher">
-  <button class="lang-btn active" data-lang="id">ID</button>
+  <button class="lang-btn active" data-lang="id" aria-label="Bahasa Indonesia">ID</button>
   <span class="lang-sep">|</span>
-  <button class="lang-btn" data-lang="en">EN</button>
+  <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
 </div>
 
 <!-- OPENING -->
@@ -45,12 +52,12 @@
     <p class="opening-to" data-i18n="to">Kepada Yth.</p>
     <h3 class="opening-guest" id="openingGuest"></h3>
     <div class="opening-divider"></div>
-    <button class="open-btn" id="openBtn" data-i18n="open">✦ Buka Undangan ✦</button>
+    <button class="open-btn" id="openBtn" data-i18n="open" aria-label="Buka undangan pernikahan">✦ Buka Undangan ✦</button>
   </div>
 </div>
 
 <!-- TOP ORNAMENT -->
-<img src="pic2.png" class="top-illustration">
+<img src="pic2.png" class="top-illustration" alt="Ilustrasi dekoratif pernikahan">
 
 <!-- BISMILLAH -->
 <section class="bismillah-section reveal">
@@ -76,7 +83,7 @@
 <!-- COUNTDOWN -->
 <section class="hero reveal">
   <p class="hero-sub" data-i18n="getting-married">Kami Akan Menikah</p>
-  <div class="flip-countdown">
+  <div class="flip-countdown" role="timer" aria-label="Hitung mundur pernikahan">
     <div class="flip-box"><span id="days">00</span><small data-i18n="days">Hari</small></div>
     <div class="flip-box"><span id="hours">00</span><small data-i18n="hours">Jam</small></div>
     <div class="flip-box"><span id="minutes">00</span><small data-i18n="minutes">Menit</small></div>
@@ -103,8 +110,8 @@
     <p class="detail-time" data-i18n="event-time2">11.00 WIB — 13.00</p>
     <div class="ornaline"></div>
     <p class="detail-location">Jalan Kenanga XII Blok C5 No 5 Taman Duta, Cisalak, Depok, Jawa Barat</p>
-    <a class="calendar-btn" id="calendarBtn" target="_blank">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+    <a class="calendar-btn" id="calendarBtn" target="_blank" rel="noopener noreferrer" aria-label="Tambahkan ke kalender Google">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true">
         <rect x="3" y="4" width="18" height="18" rx="2"/>
         <line x1="16" y1="2" x2="16" y2="6"/>
         <line x1="8" y1="2" x2="8" y2="6"/>
@@ -123,7 +130,7 @@
 </h2>
 <section class="map-section reveal">
   <div class="map-wrap">
-    <iframe src="https://maps.google.com/maps?q=-6.376053268106767,106.85938933615078&z=15&output=embed"></iframe>
+    <iframe src="https://maps.google.com/maps?q=-6.376053268106767,106.85938933615078&z=15&output=embed" title="Peta lokasi pernikahan" loading="lazy"></iframe>
   </div>
 </section>
 
@@ -139,12 +146,12 @@
 
       <div class="form-group">
         <label data-i18n="form-name">Nama Lengkap</label>
-        <input type="text" id="nama" data-i18n-ph="placeholder-name" placeholder="Masukkan nama Anda" required>
+        <input type="text" id="nama" data-i18n-ph="placeholder-name" placeholder="Masukkan nama Anda" required aria-required="true">
       </div>
 
       <div class="form-group">
         <label data-i18n="form-category">Kategori</label>
-        <select id="kategori" required>
+        <select id="kategori" required aria-required="true">
           <option value="" data-i18n="placeholder-category">Pilih kategori</option>
           <option value="Keluarga" data-i18n="cat-family">Keluarga</option>
           <option value="Rekan Kerja" data-i18n="cat-colleague">Rekan Kerja</option>
@@ -154,7 +161,7 @@
 
       <div class="form-group">
         <label data-i18n="form-attend">Kesediaan Hadir</label>
-        <select id="kehadiran" required>
+        <select id="kehadiran" required aria-required="true">
           <option value="" data-i18n="placeholder-attend">Konfirmasi kehadiran</option>
           <option value="Hadir" data-i18n="attend-yes">Hadir</option>
           <option value="Berhalangan" data-i18n="attend-no">Berhalangan</option>
@@ -169,11 +176,11 @@
       <button type="submit" class="submit-btn" data-i18n="submit">Kirim</button>
     </form>
 
-    <p id="formMessage"></p>
+    <p id="formMessage" role="status" aria-live="polite"></p>
 
     <div class="ucapan-box">
       <h3>✦ <span data-i18n="wishes-title">Doa &amp; Ucapan</span> ✦</h3>
-      <div id="ucapanList"></div>
+      <div id="ucapanList" role="list"></div>
     </div>
   </div>
 </section>
@@ -195,14 +202,14 @@
         <p class="bank-name">Bank Mandiri</p>
         <div class="account-row">
           <span class="account-number">1260011936944</span>
-          <button class="copy-btn" data-i18n="copy" onclick="copyAccount(this,'1260011936944')">Salin</button>
+          <button class="copy-btn" data-i18n="copy" onclick="copyAccount(this,'1260011936944')" aria-label="Salin nomor rekening Mandiri">Salin</button>
         </div>
       </div>
       <div class="bank-entry">
         <p class="bank-name">Bank BRI</p>
         <div class="account-row">
           <span class="account-number">644901013075539</span>
-          <button class="copy-btn" data-i18n="copy" onclick="copyAccount(this,'644901013075539')">Salin</button>
+          <button class="copy-btn" data-i18n="copy" onclick="copyAccount(this,'644901013075539')" aria-label="Salin nomor rekening BRI">Salin</button>
         </div>
       </div>
     </div>
@@ -212,7 +219,7 @@
         <p class="bank-name">Bank BCA</p>
         <div class="account-row">
           <span class="account-number">1663568349</span>
-          <button class="copy-btn" data-i18n="copy" onclick="copyAccount(this,'1663568349')">Salin</button>
+          <button class="copy-btn" data-i18n="copy" onclick="copyAccount(this,'1663568349')" aria-label="Salin nomor rekening BCA">Salin</button>
         </div>
       </div>
     </div>
@@ -227,27 +234,38 @@
 </h2>
 <section class="gallery reveal">
   <div class="javanese-card carousel-wrap">
-    <div class="carousel-track" id="galleryTrack"></div>
+    <div class="carousel-track" id="galleryTrack" role="list"></div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<img src="pic3.png" class="bottom-illustration">
+<img src="pic3.png" class="bottom-illustration" alt="Ilustrasi dekoratif bawah">
 <footer>
   <p><span data-i18n="footer-love">With love,</span> <span>Khansa &amp; Fikri</span></p>
 </footer>
 
 <!-- AUDIO -->
-<audio id="bgMusic" loop><source src="music.mp3"></audio>
+<audio id="bgMusic" loop preload="none"><source src="music.mp3" type="audio/mpeg"></audio>
+
+<!-- MUSIC PLAYER -->
+<div class="music-player" id="musicPlayer">
+  <button class="music-play-btn" id="musicToggle" aria-label="Kontrol musik latar">▶</button>
+  <div class="music-info">
+    <div class="music-title">Background Music</div>
+    <div class="music-bar" id="musicBar">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+</div>
 
 <script src="script.js"></script>
 
 <!-- LIGHTBOX -->
-<div id="lightbox" class="lightbox">
-  <button id="lightboxClose" class="lightbox-close">✕</button>
-  <button id="lightboxPrev" class="lightbox-prev">‹</button>
-  <img id="lightboxImg">
-  <button id="lightboxNext" class="lightbox-next">›</button>
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Galeri foto fullscreen">
+  <button id="lightboxClose" class="lightbox-close" aria-label="Tutup galeri">✕</button>
+  <button id="lightboxPrev" class="lightbox-prev" aria-label="Foto sebelumnya">‹</button>
+  <img id="lightboxImg" alt="Foto galeri">
+  <button id="lightboxNext" class="lightbox-next" aria-label="Foto berikutnya">›</button>
 </div>
 
 </body>
