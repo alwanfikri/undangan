@@ -433,4 +433,4 @@ document.getElementById("lightboxClose").onclick=closeLightbox
 document.getElementById("lightboxNext").onclick=nextImage
 document.getElementById("lightboxPrev").onclick=prevImage
 
-})
+}
