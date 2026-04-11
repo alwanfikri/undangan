@@ -135,7 +135,7 @@ body > * { position: relative; z-index: 1; }
   width: auto;
   padding: 5px 16px;
   border: none;
-  background: rgba(192,57,43,0.08);
+  background: rgba(255, 99, 71, 0.8);
   backdrop-filter: blur(4px);
   border-radius: 2px;
   color: var(--red);
