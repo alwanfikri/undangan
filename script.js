@@ -3,7 +3,20 @@ CONFIG
 ================================ */
 
 const scriptURL =
-"https://script.google.com/macros/s/AKfycbxzaoGM7qpX3q1kvsCzvgUU1NV4oe6BBksLsdEW49DoMB5nCiTj8ycMVVBUMpybgYA1/exec"
+"https://script.google.com/macros/s/AKfycbxzaoGM7qpX3q1kvsCzvgUU1NV4oe6BBksLsdEW49DoMB5nCiTj8ycMVVBUMpybgYA1/exec?v=1.0.1"
+
+
+/* ===============================
+UTILITY FUNCTIONS
+================================ */
+
+function debounce(func, wait) {
+  let timeout
+  return function(...args) {
+    clearTimeout(timeout)
+    timeout = setTimeout(() => func.apply(this, args), wait)
+  }
+}
 
 
 /* ===============================
@@ -60,6 +73,9 @@ const i18n = {
     "copied":               "✓ Tersalin",
     /* gallery */
     "gallery-title":        "Galeri",
+    "gallery-loading":      "Memuat galeri...",
+    "gallery-empty":        "Galeri sedang dalam proses 🤍",
+    "gallery-error":        "Gagal memuat galeri. Coba refresh halaman.",
     /* footer */
     "footer-love":          "With love,",
     /* messages */
@@ -67,6 +83,10 @@ const i18n = {
     "rsvp-success":         "Terima kasih atas doa dan kehadirannya 🤍",
     "rsvp-error":           "Terjadi kesalahan. Mohon coba lagi.",
     "ucapan-empty":         "Jadilah yang pertama memberikan ucapan 🤍",
+    /* validation */
+    "validation-name":      "Mohon masukkan nama Anda",
+    "validation-category":  "Mohon pilih kategori",
+    "validation-attend":    "Mohon konfirmasi kehadiran",
   },
 
   en: {
@@ -117,6 +137,9 @@ const i18n = {
     "copied":               "✓ Copied",
     /* gallery */
     "gallery-title":        "Gallery",
+    "gallery-loading":      "Loading gallery...",
+    "gallery-empty":        "Gallery is being prepared 🤍",
+    "gallery-error":        "Failed to load gallery. Please refresh the page.",
     /* footer */
     "footer-love":          "With love,",
     /* messages */
@@ -124,6 +147,10 @@ const i18n = {
     "rsvp-success":         "Thank you for your prayers and attendance 🤍",
     "rsvp-error":           "An error occurred. Please try again.",
     "ucapan-empty":         "Be the first to share your wishes 🤍",
+    /* validation */
+    "validation-name":      "Please enter your name",
+    "validation-category":  "Please select a category",
+    "validation-attend":    "Please confirm your attendance",
   }
 
 }
@@ -152,6 +179,9 @@ function applyLang(lang) {
   })
 
   document.documentElement.lang = lang
+  
+  // Update form validation messages
+  updateFormValidation()
 }
 
 document.querySelectorAll(".lang-btn").forEach(btn => {
@@ -161,22 +191,61 @@ document.querySelectorAll(".lang-btn").forEach(btn => {
 applyLang("id")
 
 
+/* ===============================
+FORM VALIDATION
+================================ */
 
+function updateFormValidation() {
+  const namaInput = document.getElementById("nama")
+  const kategoriInput = document.getElementById("kategori")
+  const kehadiranInput = document.getElementById("kehadiran")
+  
+  if (namaInput) {
+    namaInput.oninvalid = () => {
+      namaInput.setCustomValidity(i18n[currentLang]["validation-name"])
+    }
+    namaInput.oninput = () => {
+      namaInput.setCustomValidity("")
+    }
+  }
+  
+  if (kategoriInput) {
+    kategoriInput.oninvalid = () => {
+      kategoriInput.setCustomValidity(i18n[currentLang]["validation-category"])
+    }
+    kategoriInput.onchange = () => {
+      kategoriInput.setCustomValidity("")
+    }
+  }
+  
+  if (kehadiranInput) {
+    kehadiranInput.oninvalid = () => {
+      kehadiranInput.setCustomValidity(i18n[currentLang]["validation-attend"])
+    }
+    kehadiranInput.onchange = () => {
+      kehadiranInput.setCustomValidity("")
+    }
+  }
+}
+
+window.addEventListener("load", updateFormValidation)
 
 
 /* ===============================
 GUEST AUTO DETECTION
 ================================ */
 
-const params=new URLSearchParams(window.location.search)
+const params = new URLSearchParams(window.location.search)
+const guestName = decodeURIComponent(params.get("to") || "")
 
-const guestName=decodeURIComponent(params.get("to")||"")
+const openingGuestEl = document.getElementById("openingGuest")
+if (openingGuestEl) {
+  openingGuestEl.innerText = guestName || "Tamu Undangan"
+}
 
-document.getElementById("openingGuest").innerText=
-guestName||"Tamu Undangan"
-
-if(guestName){
-document.getElementById("nama").value=guestName
+if (guestName) {
+  const namaInput = document.getElementById("nama")
+  if (namaInput) namaInput.value = guestName
 }
 
 
@@ -184,57 +253,98 @@ document.getElementById("nama").value=guestName
 COUNTDOWN
 ================================ */
 
-const targetDate=new Date("June 13, 2026 08:00:00").getTime()
+const targetDate = new Date("June 13, 2026 08:00:00").getTime()
 
-function pad(n){
-return String(n).padStart(2,"0")
+function pad(n) {
+  return String(n).padStart(2, "0")
 }
 
-function countdown(){
+function countdown() {
+  const now = new Date().getTime()
+  const d = targetDate - now
 
-const now=new Date().getTime()
+  if (d <= 0) {
+    document.getElementById("days").textContent = "00"
+    document.getElementById("hours").textContent = "00"
+    document.getElementById("minutes").textContent = "00"
+    document.getElementById("seconds").textContent = "00"
+    return
+  }
 
-const d=targetDate-now
+  const daysEl = document.getElementById("days")
+  const hoursEl = document.getElementById("hours")
+  const minutesEl = document.getElementById("minutes")
+  const secondsEl = document.getElementById("seconds")
 
-if(d<=0) return
-
-document.getElementById("days").textContent=
-pad(Math.floor(d/86400000))
-
-document.getElementById("hours").textContent=
-pad(Math.floor(d/3600000)%24)
-
-document.getElementById("minutes").textContent=
-pad(Math.floor(d/60000)%60)
-
-document.getElementById("seconds").textContent=
-pad(Math.floor(d/1000)%60)
-
+  if (daysEl) daysEl.textContent = pad(Math.floor(d / 86400000))
+  if (hoursEl) hoursEl.textContent = pad(Math.floor(d / 3600000) % 24)
+  if (minutesEl) minutesEl.textContent = pad(Math.floor(d / 60000) % 60)
+  if (secondsEl) secondsEl.textContent = pad(Math.floor(d / 1000) % 60)
 }
 
 countdown()
-setInterval(countdown,1000)
+setInterval(countdown, 1000)
 
 
 /* ===============================
 OPEN INVITATION
 ================================ */
 
-document.getElementById("openBtn").onclick=()=>{
+const openBtn = document.getElementById("openBtn")
+if (openBtn) {
+  openBtn.onclick = () => {
+    const bgMusic = document.getElementById("bgMusic")
+    if (bgMusic) {
+      bgMusic.play().catch(() => {})
+    }
 
-document.getElementById("bgMusic").play().catch(()=>{})
+    window.scrollTo({ top: 0, behavior: "smooth" })
 
-window.scrollTo({top:0,behavior:"smooth"})
+    const el = document.getElementById("opening")
+    if (el) {
+      el.style.opacity = "0"
+      el.style.transform = "scale(1.05)"
 
-const el=document.getElementById("opening")
+      setTimeout(() => {
+        el.style.display = "none"
+      }, 900)
+    }
+  }
+}
 
-el.style.opacity="0"
-el.style.transform="scale(1.05)"
 
-setTimeout(()=>{
-el.style.display="none"
-},900)
+/* ===============================
+MUSIC PLAYER
+================================ */
 
+const bgMusic = document.getElementById("bgMusic")
+const musicToggle = document.getElementById("musicToggle")
+const musicBar = document.getElementById("musicBar")
+
+if (musicToggle && bgMusic) {
+  musicToggle.addEventListener("click", () => {
+    if (bgMusic.paused) {
+      bgMusic.play().then(() => {
+        musicToggle.innerHTML = "⏸"
+        if (musicBar) musicBar.classList.remove("paused")
+      }).catch(() => {})
+    } else {
+      bgMusic.pause()
+      musicToggle.innerHTML = "▶"
+      if (musicBar) musicBar.classList.add("paused")
+    }
+  })
+
+  // Update music player state when music plays/pauses
+  bgMusic.addEventListener("play", () => {
+    musicToggle.innerHTML = "⏸"
+    if (musicBar) musicBar.classList.remove("paused")
+  })
+
+  bgMusic.addEventListener("pause", () => {
+    musicToggle.innerHTML = "▶"
+    if (musicBar) musicBar.classList.add("paused")
+  })
 }
 
 
@@ -243,320 +353,357 @@ COPY BANK ACCOUNT
 ================================ */
 
 function copyAccount(btn, number) {
-  const orig = btn.innerText
   navigator.clipboard.writeText(number).catch(() => {
     // fallback
     const ta = document.createElement("textarea")
     ta.value = number
+    ta.style.position = "fixed"
+    ta.style.opacity = "0"
     document.body.appendChild(ta)
     ta.select()
     document.execCommand("copy")
     ta.remove()
   })
+  
+  const originalText = btn.innerText
   btn.innerText = i18n[currentLang]["copied"]
   btn.classList.add("copied")
+  
   setTimeout(() => {
     btn.innerText = i18n[currentLang]["copy"]
     btn.classList.remove("copied")
   }, 2200)
 }
 
-window.copyAccount=copyAccount
+window.copyAccount = copyAccount
 
 
 /* ===============================
 RSVP SUBMIT
 ================================ */
 
-document.getElementById("rsvpForm").addEventListener("submit",async e=>{
+const rsvpForm = document.getElementById("rsvpForm")
+if (rsvpForm) {
+  rsvpForm.addEventListener("submit", async e => {
+    e.preventDefault()
 
-e.preventDefault()
+    const data = {
+      nama: document.getElementById("nama").value,
+      kategori: document.getElementById("kategori").value,
+      kehadiran: document.getElementById("kehadiran").value,
+      ucapan: document.getElementById("ucapan").value
+    }
 
-const data={
+    const msg = document.getElementById("formMessage")
+    const submitBtn = e.target.querySelector(".submit-btn")
 
-nama:document.getElementById("nama").value,
-kategori:document.getElementById("kategori").value,
-kehadiran:document.getElementById("kehadiran").value,
-ucapan:document.getElementById("ucapan").value
+    msg.innerText = i18n[currentLang]["rsvp-sending"]
+    submitBtn.disabled = true
+    submitBtn.style.opacity = "0.5"
 
+    try {
+      const response = await fetch(scriptURL, {
+        method: "POST",
+        body: JSON.stringify(data)
+      })
+
+      if (!response.ok) throw new Error("Network response was not ok")
+
+      msg.innerText = i18n[currentLang]["rsvp-success"]
+      msg.style.color = "var(--green-sage)"
+
+      e.target.reset()
+
+      if (guestName) {
+        document.getElementById("nama").value = guestName
+      }
+
+      loadUcapan()
+
+    } catch (error) {
+      console.error("RSVP error:", error)
+      msg.innerText = i18n[currentLang]["rsvp-error"]
+      msg.style.color = "var(--red)"
+    } finally {
+      submitBtn.disabled = false
+      submitBtn.style.opacity = "1"
+    }
+  })
 }
-
-const msg=document.getElementById("formMessage")
-
-msg.innerText=i18n[currentLang]["rsvp-sending"]
-
-try{
-
-await fetch(scriptURL,{
-method:"POST",
-body:JSON.stringify(data)
-})
-
-msg.innerText=i18n[currentLang]["rsvp-success"]
-
-e.target.reset()
-
-if(guestName){
-document.getElementById("nama").value=guestName
-}
-
-loadUcapan()
-
-}catch{
-
-msg.innerText=i18n[currentLang]["rsvp-error"]
-
-}
-
-})
 
 
 /* ===============================
 MESSAGE BOARD
 ================================ */
 
-async function loadUcapan(){
+async function loadUcapan() {
+  try {
+    const res = await fetch(scriptURL)
 
-try{
+    if (!res.ok) throw new Error("Failed to fetch")
 
-const res=await fetch(scriptURL)
+    const data = await res.json()
+    const box = document.getElementById("ucapanList")
 
-const data=await res.json()
+    if (!box) return
 
-const box=document.getElementById("ucapanList")
+    box.innerHTML = ""
 
-box.innerHTML=""
+    const items = data.reverse().slice(0, 50).filter(i => i.Nama && i.Ucapan)
+    
+    if (!items.length) {
+      box.innerHTML = `<p style="text-align:center;font-style:italic;font-size:.9rem;color:#9a7050;padding:16px 0;">${i18n[currentLang]["ucapan-empty"]}</p>`
+      return
+    }
+    
+    items.forEach(item => {
+      const div = document.createElement("div")
+      div.className = "ucapan-item"
+      div.setAttribute("role", "listitem")
 
-const items = data.reverse().slice(0,50).filter(i => i.Nama && i.Ucapan)
-if (!items.length) {
-  box.innerHTML = `<p style="text-align:center;font-style:italic;font-size:.9rem;color:#9a7050;padding:16px 0;">${i18n[currentLang]["ucapan-empty"]}</p>`
-  return
-}
-items.forEach(item=>{
+      div.innerHTML = `
+        <strong>${item.Nama}${item.Kategori ? " · " + item.Kategori : ""}</strong>
+        <p>${item.Ucapan}</p>
+        <span class="badge ${item.Kehadiran === "Hadir" ? "hadir" : "tidak"}">${item.Kehadiran}</span>
+      `
 
-const div=document.createElement("div")
+      box.appendChild(div)
+    })
 
-div.className="ucapan-item"
-
-div.innerHTML=`
-<strong>${item.Nama}${item.Kategori?" · "+item.Kategori:""}</strong>
-<p>${item.Ucapan}</p>
-<span class="badge ${item.Kehadiran==="Hadir"?"hadir":"tidak"}">${item.Kehadiran}</span>
-`
-
-box.appendChild(div)
-
-})
-
-}catch(e){
-
-console.error(e)
-
-}
-
+  } catch (e) {
+    console.error("Load ucapan error:", e)
+  }
 }
 
-window.addEventListener("load",loadUcapan)
+window.addEventListener("load", loadUcapan)
+
+// Auto-refresh ucapan setiap 30 detik
+setInterval(loadUcapan, 30000)
 
 
 /* ===============================
 SCROLL REVEAL
 ================================ */
 
-function reveal(){
+function reveal() {
+  const h = window.innerHeight
 
-const h=window.innerHeight
-
-document.querySelectorAll(".reveal").forEach(el=>{
-
-if(el.getBoundingClientRect().top<h-70){
-el.classList.add("active")
+  document.querySelectorAll(".reveal").forEach(el => {
+    if (el.getBoundingClientRect().top < h - 70) {
+      el.classList.add("active")
+    }
+  })
 }
 
-})
+// Use debounce untuk optimasi performa
+window.addEventListener("scroll", debounce(reveal, 100))
+window.addEventListener("load", reveal)
 
+
+/* ===============================
+PARALLAX HEADER
+================================ */
+
+function parallaxHeader() {
+  const illustration = document.querySelector(".top-illustration")
+  if (illustration) {
+    const scrolled = window.pageYOffset
+    illustration.style.transform = `translateY(${scrolled * 0.3}px)`
+  }
 }
 
-window.addEventListener("scroll",reveal)
-window.addEventListener("load",reveal)
+window.addEventListener("scroll", debounce(parallaxHeader, 16))
 
 
 /* ===============================
 GALLERY FROM GOOGLE DRIVE
 ================================ */
 
-async function loadGallery(){
+async function loadGallery() {
+  const track = document.getElementById("galleryTrack")
 
-const track=document.getElementById("galleryTrack")
+  if (!track) return
 
-if(!track) return
+  // Show loading state
+  track.innerHTML = `<p style="text-align:center;padding:40px;color:var(--brown);font-style:italic;">${i18n[currentLang]["gallery-loading"]}</p>`
 
-try{
+  try {
+    const res = await fetch(scriptURL + "?action=gallery")
 
-const res=await fetch(scriptURL+"?action=gallery")
+    if (!res.ok) throw new Error("Gallery fetch failed")
 
-const images=await res.json()
+    const images = await res.json()
 
-// Sort images by numeric filename (1.jpg, 2.jpg, 3.jpg, etc.)
-images.sort((a, b) => {
-  const numA = parseInt(a.match(/(\d+)\./)?.[1] || '0')
-  const numB = parseInt(b.match(/(\d+)\./)?.[1] || '0')
-  return numA - numB
-})
+    if (!images || images.length === 0) {
+      track.innerHTML = `<p style="text-align:center;padding:40px;color:var(--brown);font-style:italic;">${i18n[currentLang]["gallery-empty"]}</p>`
+      return
+    }
 
-images.forEach(src=>{
+    // Clear loading state
+    track.innerHTML = ""
 
-const slide=document.createElement("div")
+    // Sort images by numeric filename (1.jpg, 2.jpg, 3.jpg, etc.)
+    images.sort((a, b) => {
+      const numA = parseInt(a.match(/(\d+)\./)?.[1] || "0")
+      const numB = parseInt(b.match(/(\d+)\./)?.[1] || "0")
+      return numA - numB
+    })
 
-slide.className="photo-slide"
+    images.forEach((src, index) => {
+      const slide = document.createElement("div")
+      slide.className = "photo-slide"
+      slide.setAttribute("role", "listitem")
 
-const img=document.createElement("img")
+      const img = document.createElement("img")
+      img.src = src
+      img.loading = "lazy"
+      img.alt = `Gallery photo ${index + 1}`
 
-img.src=src
-img.loading="lazy"
-img.alt="Gallery photo"
+      slide.appendChild(img)
+      track.appendChild(slide)
+    })
 
-slide.appendChild(img)
+    setTimeout(initLightbox, 300)
 
-track.appendChild(slide)
-
-})
-
-}catch(e){
-
-console.error("Gallery load error",e)
-
+  } catch (e) {
+    console.error("Gallery load error", e)
+    track.innerHTML = `<p style="text-align:center;padding:40px;color:var(--red);font-style:italic;">${i18n[currentLang]["gallery-error"]}</p>`
+  }
 }
 
-setTimeout(initLightbox,300)
-
-}
-
-window.addEventListener("load",loadGallery)
+window.addEventListener("load", loadGallery)
 
 
 /* ===============================
 ADD TO CALENDAR
 ================================ */
 
-function initCalendar(){
+function initCalendar() {
+  const btn = document.getElementById("calendarBtn")
 
-const btn=document.getElementById("calendarBtn")
+  if (!btn) return
 
-if(!btn) return
+  const start = "20260613T010000Z"
+  const end = "20260613T070000Z"
 
-const start="20260613T010000Z"
-const end="20260613T070000Z"
+  const title = encodeURIComponent("Pernikahan Khansa & Fikri")
+  const loc = encodeURIComponent("Depok, Jawa Barat")
 
-const title=encodeURIComponent("Pernikahan Khansa & Fikri")
-const loc=encodeURIComponent("Depok, Jawa Barat")
-
-btn.href=
-`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&location=${loc}`
-
+  btn.href =
+    `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&location=${loc}`
 }
 
-window.addEventListener("load",initCalendar)
+window.addEventListener("load", initCalendar)
 
 
 /* ===============================
 GALLERY LIGHTBOX
 ================================ */
 
-let galleryImages=[]
-let currentIndex=0
-let startX=0
-let scale=1
+let galleryImages = []
+let currentIndex = 0
+let startX = 0
+let scale = 1
 
-document.addEventListener("DOMContentLoaded",()=>{
+document.addEventListener("DOMContentLoaded", () => {
+  const lightbox = document.getElementById("lightbox")
+  const lightboxImg = document.getElementById("lightboxImg")
+  const btnClose = document.getElementById("lightboxClose")
+  const btnNext = document.getElementById("lightboxNext")
+  const btnPrev = document.getElementById("lightboxPrev")
 
-const lightbox=document.getElementById("lightbox")
-const lightboxImg=document.getElementById("lightboxImg")
-const btnClose=document.getElementById("lightboxClose")
-const btnNext=document.getElementById("lightboxNext")
-const btnPrev=document.getElementById("lightboxPrev")
+  if (!lightbox || !lightboxImg || !btnClose || !btnNext || !btnPrev) return
 
-btnClose.addEventListener("click",closeLightbox)
-btnNext.addEventListener("click",nextImage)
-btnPrev.addEventListener("click",prevImage)
+  btnClose.addEventListener("click", closeLightbox)
+  btnNext.addEventListener("click", nextImage)
+  btnPrev.addEventListener("click", prevImage)
 
-document.addEventListener("keydown",e=>{
+  document.addEventListener("keydown", e => {
+    if (!lightbox.classList.contains("active")) return
 
-if(!lightbox.classList.contains("active")) return
+    if (e.key === "ArrowRight") nextImage()
+    if (e.key === "ArrowLeft") prevImage()
+    if (e.key === "Escape") closeLightbox()
+  })
 
-if(e.key==="ArrowRight") nextImage()
-if(e.key==="ArrowLeft") prevImage()
-if(e.key==="Escape") closeLightbox()
+  lightbox.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX
+  })
 
+  lightbox.addEventListener("touchend", e => {
+    let endX = e.changedTouches[0].clientX
+
+    if (startX - endX > 50) nextImage()
+    if (endX - startX > 50) prevImage()
+  })
+
+  lightboxImg.addEventListener("wheel", e => {
+    e.preventDefault()
+
+    scale += e.deltaY * -0.001
+    scale = Math.min(Math.max(.8, scale), 4)
+
+    lightboxImg.style.transform = `scale(${scale})`
+  })
 })
 
-lightbox.addEventListener("touchstart",e=>{
-startX=e.touches[0].clientX
-})
+function initLightbox() {
+  const slides = document.querySelectorAll(".photo-slide img")
 
-lightbox.addEventListener("touchend",e=>{
+  galleryImages = [...slides].map(img => img.src)
 
-let endX=e.changedTouches[0].clientX
-
-if(startX-endX>50) nextImage()
-if(endX-startX>50) prevImage()
-
-})
-
-lightboxImg.addEventListener("wheel",e=>{
-
-e.preventDefault()
-
-scale+=e.deltaY*-0.001
-scale=Math.min(Math.max(.8,scale),4)
-
-lightboxImg.style.transform=`scale(${scale})`
-
-})
-
-})
-
-function initLightbox(){
-
-const slides=document.querySelectorAll(".photo-slide img")
-
-galleryImages=[...slides].map(img=>img.src)
-
-slides.forEach((img,i)=>{
-img.addEventListener("click",()=>openLightbox(i))
-})
-
+  slides.forEach((img, i) => {
+    img.addEventListener("click", () => openLightbox(i))
+    img.style.cursor = "pointer"
+  })
 }
 
-function openLightbox(i){
+function openLightbox(i) {
+  currentIndex = i
 
-currentIndex=i
+  const lightbox = document.getElementById("lightbox")
+  const lightboxImg = document.getElementById("lightboxImg")
 
-const lightbox=document.getElementById("lightbox")
-const lightboxImg=document.getElementById("lightboxImg")
+  if (!lightbox || !lightboxImg) return
 
-lightboxImg.src=galleryImages[i]
+  lightboxImg.src = galleryImages[i]
+  scale = 1
+  lightboxImg.style.transform = `scale(1)`
 
-lightbox.classList.add("active")
-
+  lightbox.classList.add("active")
+  document.body.style.overflow = "hidden"
 }
 
-function closeLightbox(){
+function closeLightbox() {
+  const lightbox = document.getElementById("lightbox")
+  if (!lightbox) return
 
-document.getElementById("lightbox").classList.remove("active")
-
+  lightbox.classList.remove("active")
+  document.body.style.overflow = ""
+  
+  scale = 1
+  const lightboxImg = document.getElementById("lightboxImg")
+  if (lightboxImg) {
+    lightboxImg.style.transform = `scale(1)`
+  }
 }
 
-function nextImage(){
-
-currentIndex=(currentIndex+1)%galleryImages.length
-document.getElementById("lightboxImg").src=galleryImages[currentIndex]
-
+function nextImage() {
+  currentIndex = (currentIndex + 1) % galleryImages.length
+  const lightboxImg = document.getElementById("lightboxImg")
+  if (lightboxImg) {
+    lightboxImg.src = galleryImages[currentIndex]
+    scale = 1
+    lightboxImg.style.transform = `scale(1)`
+  }
 }
 
-function prevImage(){
-
-currentIndex=(currentIndex-1+galleryImages.length)%galleryImages.length
-document.getElementById("lightboxImg").src=galleryImages[currentIndex]
-
+function prevImage() {
+  currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length
+  const lightboxImg = document.getElementById("lightboxImg")
+  if (lightboxImg) {
+    lightboxImg.src = galleryImages[currentIndex]
+    scale = 1
+    lightboxImg.style.transform = `scale(1)`
+  }
 }
