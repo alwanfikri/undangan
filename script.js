@@ -395,7 +395,13 @@ try{
 
 const res=await fetch(scriptURL+"?action=gallery")
 
-const images=await res.json()
+let images=await res.json()
+
+/* SORT NUMERIC (1,2,3,10,11...) */
+
+images = images.sort((a,b)=>{
+return a.localeCompare(b,undefined,{numeric:true,sensitivity:'base'})
+})
 
 images.forEach(src=>{
 
@@ -418,6 +424,10 @@ track.appendChild(slide)
 }catch(e){
 
 console.error("Gallery load error",e)
+
+}
+
+setTimeout(initLightbox,300)
 
 }
 
