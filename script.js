@@ -542,11 +542,21 @@ async function loadGallery() {
     // Clear loading state
     track.innerHTML = ""
 
-    // Sort images by numeric filename (1.jpg, 2.jpg, 3.jpg, etc.)
+    // ✅ PERBAIKAN: Sort images by numeric filename (1.jpg, 2.jpg, 3.jpg, etc.) — ASCENDING
     images.sort((a, b) => {
-      const numA = parseInt(a.match(/(\d+)\./)?.[1] || "0")
-      const numB = parseInt(b.match(/(\d+)\./)?.[1] || "0")
-      return numA - numB
+      // Extract number from URL or filename
+      // Google Drive URLs: https://lh3.googleusercontent.com/d/{ID}
+      // We need to match the original filename pattern if it contains numbers
+      const extractNum = (url) => {
+        // Try to match pattern like "1.jpg", "2.png", "10.jpeg" etc
+        const match = url.match(/\/(\d+)\.[^.\/]+$/) || url.match(/(\d+)/)
+        return match ? parseInt(match[1]) : 0
+      }
+      
+      const numA = extractNum(a)
+      const numB = extractNum(b)
+      
+      return numA - numB  // ✅ Ascending order: 1, 2, 3, 4, ...
     })
 
     images.forEach((src, index) => {
