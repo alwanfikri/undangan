@@ -597,7 +597,7 @@ function initCalendar() {
   const end = "20260613T070000Z"
 
   const title = encodeURIComponent("Pernikahan Khansa & Fikri")
-  const loc = encodeURIComponent("Depok, Jawa Barat")
+  const loc = encodeURIComponent("Gedung Balai Rakyat Depok II, Jl. Nusantara Raya No.180, Depok, Jawa Barat")
 
   btn.href =
     `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&location=${loc}`
