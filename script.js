@@ -44,7 +44,7 @@ const i18n = {
     "event-name1":           "Akad Nikah",
     "event-name2":           "Resepsi",
     "event-date":           "Sabtu, 13 Juni 2026",
-    "event-time1":           "07.30 — 09.00 WIB",
+    "event-time1":           "08.00 — 09.00 WIB",
     "event-time2":           "11.00 — 13.00 WIB",
     "save-calendar":        "Simpan ke Kalender",
     /* lokasi */
@@ -108,7 +108,7 @@ const i18n = {
     "event-name1":           "Akad Nikah",
     "event-name2":           "Reception",
     "event-date":           "Saturday, June 13, 2026",
-    "event-time1":           "07.30 — 09.00 WIB",
+    "event-time1":           "08.00 — 09.00 WIB",
     "event-time2":           "11.00 — 13.00 WIB",
     "save-calendar":        "Save to Calendar",
     /* lokasi */
